@@ -1,8 +1,8 @@
-const User = require('./user');
-const Character = require('./character');
-const Class = require('./class');
-const Subclass = require('./subclass');
-const Weapon = require('./weapons');
+const User = require('./User');
+const Character = require('./Character');
+const Class = require('./Class');
+const Subclass = require('./Subclass');
+const Weapon = require('./Weapons');
 
 
 User.hasMany(Character, {
