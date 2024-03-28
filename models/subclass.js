@@ -10,11 +10,18 @@ Subclass.init(
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
-        },
+    },
+    subclass_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
     },
     {
     sequelize,
-    freezeTableName: true,
+    freezeTableName: false,
     modelName: 'subclass',
     }
 )
+
+module.exports = Subclass;
