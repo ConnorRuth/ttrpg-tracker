@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Character extends Model {
+class Savescore extends Model {
 }
 
-Character.init(
+Savescore.init(
     {
      id: {
         type: DataTypes.INTEGER,
@@ -11,39 +11,29 @@ Character.init(
         primaryKey: true,
         autoIncrement: true,
     },
-    level: {
+     character_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    class_id: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'class',
+        reference: {
+            model: 'character',
             key: 'id',
         }
-    },
-    race_id: {
+     },
+     ability_id: {
         type: DataTypes.INTEGER,
-        references: {
-            model: 'race',
+        reference: {
+            model: 'spellsave',
             key: 'id',
         }
-    },
-    maxHP: {
-        type: DataTypes.INTEGER,
-        allowNull:false,
-    },
-    currentHP: {
+     },
+     score: {
         type: DataTypes.INTEGER,
         allowNull: false,
-    },
-    
+     }
     },
     {
     sequelize,
     freezeTableName: true,
-    modelName: 'class',
+    modelName: 'savescore',
     }
 )
-
-module.exports = Character;
+module.exports = Savescore;

@@ -3,24 +3,44 @@ const Character = require('./character');
 const Class = require('./class');
 const Subclass = require('./subclass');
 const Weapon = require('./weapons');
-
-
+const Property = require('./weapon_prop');
+const Skill = require('./skill');
+const Ability = require('./abilities');
+const Race = require('./race');
+const Skill = require('./skill');
+const Spellsave = require('./savescores');
 User.hasMany(Character, {
     foreignKey: 'character_id',
+    onDelete: 'cascade',
   });
   
 Character.belongsTo(User, {
-    foreignKey: '',
+    foreignKey: 'character_id',
   });
 
 Character.hasMany(Weapon, {
-    foreignKey: '',
+    foreignKey: 'weapon_id',
 });
 
 Character.hasOne(Class, {
-    foreignKey: '',
+    foreignKey: 'class_id',
 });
 
 Character.hasOne(Subclass, {
-    foreignKey: '',
+    foreignKey: 'subclass_id',
 });
+Character.hasMany(Skill, {
+  foreignKey: 'skill_id',
+});
+Character.hasMany(Ability, {
+  foreignKey: 'ability_id',
+});
+Character.hasOne(Race, {
+  foreignKey: 'race_id',
+});
+Character.hasMany(Spellsave, {
+  foreignKey: 'savescore_id',
+});
+Weapon.hasMany(Property, {
+  foreignKey: 'property_id',
+})

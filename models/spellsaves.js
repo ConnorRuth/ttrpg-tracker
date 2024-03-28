@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Class extends Model {
+class Spellsave extends Model {
 }
 
-Class.init(
+Spellsave.init(
     {
      id: {
         type: DataTypes.INTEGER,
@@ -11,16 +11,15 @@ Class.init(
         primaryKey: true,
         autoIncrement: true,
     },
-     class_name: {
+     save_name: {
         type: DataTypes.STRING,
         allowNull: false,
-    
-     }
+     },
     },
     {
     sequelize,
     freezeTableName: true,
-    modelName: 'class',
+    modelName: 'spellsave',
     }
 )
-module.exports = Class;
+module.exports = Spellsave;
