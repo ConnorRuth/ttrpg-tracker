@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Character, Class, Subclass, User, Weapons } = require('../../models');
+const { Ability, Abilityscore, Race, Savescore, Skill, Skillscore, Spellsave, Property, Character, Class, Subclass, User, Weapons } = require('../../models');
 
 //The `/api/character` endpoint
 
@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     //find all characters
     try{
         const charData = await Character.findAll({
-            include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}],
+            include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}, {model: Ability}, {model: Abilityscore}, {model: Race}, {model: Savescore}, {model: Skill}, {model: Skillscore}, {model: Skill}, {model: Spellsave}, {model: Property}],
         });
         res.status(200).json(charData);
     } catch (err) {
@@ -19,7 +19,7 @@ router.get('/:id', async (req,res) => {
     //find one character by its `id` value
     try{
         const charData = await Character.findByPk(req.params.id, {
-            include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}],
+            include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}, {model: Ability}, {model: Abilityscore}, {model: Race}, {model: Savescore}, {model: Skill}, {model: Skillscore}, {model: Skill}, {model: Spellsave}, {model: Property}],
         });
 
         if (!charData) {
