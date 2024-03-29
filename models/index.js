@@ -7,7 +7,7 @@ const Property = require('./weapon_prop');
 const Skill = require('./skill');
 const Ability = require('./abilities');
 const Race = require('./race');
-const Skill = require('./skill');
+const Skillscore = require('./skill');
 const Spellsave = require('./savescores');
 User.hasMany(Character, {
     foreignKey: 'character_id',
@@ -30,6 +30,7 @@ Character.hasOne(Subclass, {
     foreignKey: 'subclass_id',
 });
 Character.hasMany(Skill, {
+  through: Skillscore,
   foreignKey: 'skill_id',
 });
 Character.hasMany(Ability, {
@@ -43,4 +44,8 @@ Character.hasMany(Spellsave, {
 });
 Weapon.hasMany(Property, {
   foreignKey: 'property_id',
-})
+});
+Skill.belongsToMany(Character, {
+  through: Skillscore,
+  foreignKey:'product_id',
+});

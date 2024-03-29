@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-
+const sequelize = require('../config/config.js');
 class Property extends Model {
 }
 Property.init(
@@ -18,7 +18,7 @@ Property.init(
     {
     sequelize,
     freezeTableName: false,
-    modelName: 'weapon',
+    modelName: 'property',
     }
 )
 
