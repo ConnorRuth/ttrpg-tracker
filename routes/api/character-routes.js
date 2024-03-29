@@ -1,5 +1,18 @@
 const router = require('express').Router();
-const { Ability, Abilityscore, Race, Savescore, Skill, Skillscore, Spellsave, Property, Character, Class, Subclass, User, Weapons } = require('../../models');
+//const { Ability, Abilityscore, Race, Savescore, Skill, Skillscore, Spellsave, Property, Character, Class, Subclass, User, Weapons } = require('../../models');
+const Ability = require('../../models/abilities');
+const Abilityscore = require('../../models/abilityscore');
+const Race = require('../../models/race');
+const Savescore = require('../../models/savescores');
+const Skill = require('../../models/skill');
+const Skillscore = require('../../models/skillscore');
+const Spellsave = require('../../models/spellsaves');
+const Property = require('../../models/weapon_prop');
+const Character = require('../../models/character');
+const Class = require('../../models/class');
+const Subclass = require('../../models/subclass');
+const User = require('../../models/user');
+const Weapons = require('../../models/weapons');
 
 //The `/api/character` endpoint
 
@@ -7,7 +20,7 @@ router.get('/', async (req, res) => {
     //find all characters
     try{
         const charData = await Character.findAll({
-            include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}, {model: Ability}, {model: Abilityscore}, {model: Race}, {model: Savescore}, {model: Skill}, {model: Skillscore}, {model: Skill}, {model: Spellsave}, {model: Property}],
+            include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}, {model: Ability}, {model: Abilityscore}, {model: Race}, {model: Savescore}, {model: Skillscore}, {model: Skill}, {model: Spellsave}, {model: Property}],
         });
         res.status(200).json(charData);
     } catch (err) {
@@ -19,7 +32,7 @@ router.get('/:id', async (req,res) => {
     //find one character by its `id` value
     try{
         const charData = await Character.findByPk(req.params.id, {
-            include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}, {model: Ability}, {model: Abilityscore}, {model: Race}, {model: Savescore}, {model: Skill}, {model: Skillscore}, {model: Skill}, {model: Spellsave}, {model: Property}],
+            include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}, {model: Ability}, {model: Abilityscore}, {model: Race}, {model: Savescore}, {model: Skillscore}, {model: Skill}, {model: Spellsave}, {model: Property}],
         });
 
         if (!charData) {
