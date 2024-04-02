@@ -37,6 +37,18 @@ Character.init(
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'user',
+            key: 'id',
+        }
+    },
+
     
     },
     {

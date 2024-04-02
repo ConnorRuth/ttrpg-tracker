@@ -36,13 +36,6 @@ Weapon.init(
         allowNull: false,
         defaultValue: false,
     },
-    properties: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'property',
-            key: 'id',
-        }
-    }
     
     },
     {

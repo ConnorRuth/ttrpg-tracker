@@ -1,4 +1,4 @@
-const { Ability } = require('../models');
+const  Ability  = require('../models/abilities');
 
 const abilityData = [
     {

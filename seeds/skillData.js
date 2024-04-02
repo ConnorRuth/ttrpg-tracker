@@ -1,4 +1,4 @@
-const { Skill } = require('../models');
+const  Skill  = require('../models/skill');
 
 
 const skillData =[

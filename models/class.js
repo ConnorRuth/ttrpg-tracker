@@ -15,13 +15,6 @@ Class.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
-    available_subclasses: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'subclass',
-            key: 'id',
-        }
-    },
 },
     {
     sequelize,

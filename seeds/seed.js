@@ -5,6 +5,7 @@ const seedSkills = require('./skillData');
 const seedWeapons = require('./weaponData');
 const seedProperties = require('./propertyData');
 const seedRaces = require('./raceData');
+const seedWeaponProps = require('./propWeapon');
 
 const sequelize = require('../config/config');
 
@@ -19,19 +20,22 @@ const seedAll = async () => {
   
     await seedSkills();
     console.log('\n----- SKILLS SEEDED -----\n');
-  
-    await seedSubclasses();
-    console.log('\n----- SUBCLASSES SEEDED -----\n');
 
     await seedClasses();
     console.log('\n----- CLASSES SEEDED -----\n');
+
+    await seedSubclasses();
+    console.log('\n----- SUBCLASSES SEEDED -----\n');
 
     await seedProperties();
     console.log('\n----- PROPERTIES SEEDED -----\n');
 
     await seedWeapons();
     console.log('\n----- WEAPONS SEEDED -----\n');
-  
+
+    await seedWeaponProps();
+    console.log('\n----- WEAPONPROPERTIES SEEDED -----\n');
+
     process.exit(0);
   };
   

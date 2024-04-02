@@ -1,4 +1,4 @@
-const { Property } = require('../models');
+const  Property  = require('../models/property');
 
 
 const propertyData = [
