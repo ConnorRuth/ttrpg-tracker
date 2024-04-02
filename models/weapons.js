@@ -32,7 +32,7 @@ Weapon.init(
         allowNull: false,
     },
     is_magical: {
-        type: datatypes.BOOLEAN,
+        type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false,
     },

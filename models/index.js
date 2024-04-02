@@ -29,10 +29,11 @@ Character.hasOne(Class, {
 Character.hasOne(Subclass, {
     foreignKey: 'subclass_id',
 });
-Character.hasMany(Skill, {
+Character.belongsToMany(Skill, {
   through: Skillscore,
-  foreignKey: 'skill_id',
+  foreignKey: 'skill_id', 
 });
+
 Character.hasMany(Ability, {
   foreignKey: 'ability_id',
 });
