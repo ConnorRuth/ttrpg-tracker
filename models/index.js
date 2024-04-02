@@ -9,6 +9,7 @@ const Ability = require('./abilities');
 const Race = require('./race');
 const Skillscore = require('./skill');
 const Spellsave = require('./savescores');
+const Abilityscore = require('./abilityscore');
 User.hasMany(Character, {
     foreignKey: 'character_id',
     onDelete: 'cascade',
@@ -34,6 +35,7 @@ Character.hasMany(Skill, {
   foreignKey: 'skill_id',
 });
 Character.hasMany(Ability, {
+  through: Abilityscore,
   foreignKey: 'ability_id',
 });
 Character.hasOne(Race, {

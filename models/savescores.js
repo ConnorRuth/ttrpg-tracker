@@ -18,7 +18,7 @@ Savescore.init(
             key: 'id',
         }
      },
-     ability_id: {
+     spellsave_id: {
         type: DataTypes.INTEGER,
         reference: {
             model: 'spellsave',

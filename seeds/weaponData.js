@@ -1,4 +1,6 @@
-[
+const { Weapon } = require('../models');
+
+const weaponData =[
     {
         "name": "Battleaxe",
         "damage": "1d8",
@@ -278,4 +280,8 @@
         "is_magical": false,
         "properties": [7, 10]
     }
-]
+];
+
+const seedWeapons = () => Weapon.bulkCreate(weaponData);
+
+module.exports = seedWeapons;

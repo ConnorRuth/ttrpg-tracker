@@ -1,4 +1,7 @@
-[
+const {Race} = require('../models');
+
+
+const raceData = [
     {
         "race_name": "Dragonborn"
     },
@@ -38,4 +41,8 @@
     {
         "race_name": "Goblin"
     }
-]
+];
+
+const seedRaces = () => Race.bulkCreate(raceData);
+
+module.exports = seedRaces;

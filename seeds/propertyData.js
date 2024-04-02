@@ -1,4 +1,7 @@
-[
+const { Property } = require('../models');
+
+
+const propertyData = [
     {
         "name": "Light"
     },
@@ -44,4 +47,8 @@
     {
         "name": "Range(100/400)"
     }
-]
+];
+
+const seedProperties = () => Property.bulkCreate(propertyData);
+
+module.exports = seedProperties;

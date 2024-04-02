@@ -14,9 +14,15 @@ Class.init(
      class_name: {
         type: DataTypes.STRING,
         allowNull: false,
-    
-     }
     },
+    available_subclasses: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'subclass',
+            key: 'id',
+        }
+    },
+},
     {
     sequelize,
     freezeTableName: true,
