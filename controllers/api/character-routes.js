@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const withAuth = require('../../utils/auth');
 //const { Ability, Abilityscore, Race, Savescore, Skill, Skillscore, Spellsave, Property, Character, Class, Subclass, User, Weapons } = require('../../models');
 const Ability = require('../../models/abilities');
 const Abilityscore = require('../../models/abilityscore');
@@ -46,7 +47,7 @@ router.get('/:id', async (req,res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     //create a new character
     try {
         const charData = await Character.create(req.body);
@@ -57,7 +58,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     //update a character by its `id` value
     try {
          const charData = await Character.update(req.body, {
@@ -77,7 +78,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     //delete a character by its `id` value
     try {
         const charData = await Character.destroy({
@@ -95,6 +96,15 @@ router.delete('/:id', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('login');
 });
 
 module.exports = router;
