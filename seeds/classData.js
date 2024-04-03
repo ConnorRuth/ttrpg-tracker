@@ -1,4 +1,6 @@
-[
+const  Class  = require('../models/class');
+
+const classData = [
     {
         "class_name": "Artificer"
     },
@@ -38,4 +40,8 @@
     {
         "class_name": "Wizard"
     }
-]
+];
+
+const seedClasses = () => Class.bulkCreate(classData);
+
+module.exports = seedClasses;

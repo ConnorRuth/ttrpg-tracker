@@ -14,9 +14,8 @@ Class.init(
      class_name: {
         type: DataTypes.STRING,
         allowNull: false,
-    
-     }
     },
+},
     {
     sequelize,
     freezeTableName: true,

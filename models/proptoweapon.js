@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/config.js');
-class Savescore extends Model {
+class WeaponProp extends Model {
 }
 
-Savescore.init(
+WeaponProp.init(
     {
      id: {
         type: DataTypes.INTEGER,
@@ -11,29 +11,25 @@ Savescore.init(
         primaryKey: true,
         autoIncrement: true,
     },
-     character_id: {
+     weapon_id: {
         type: DataTypes.INTEGER,
         reference: {
-            model: 'character',
+            model: 'weapon',
             key: 'id',
         }
      },
-     spellsave_id: {
+     property_id: {
         type: DataTypes.INTEGER,
         reference: {
-            model: 'spellsave',
+            model: 'property',
             key: 'id',
         }
      },
-     score: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-     }
     },
     {
     sequelize,
     freezeTableName: true,
-    modelName: 'savescore',
+    modelName: 'Weaponprops',
     }
 )
-module.exports = Savescore;
+module.exports = WeaponProp;

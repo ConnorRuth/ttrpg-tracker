@@ -36,10 +36,6 @@ Weapon.init(
         allowNull: false,
         defaultValue: false,
     },
-    properties: {
-        type: DataTypes.STRING,
-        allowNull: true,
-    }
     
     },
     {
