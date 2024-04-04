@@ -33,7 +33,7 @@ SESSION_SECRET=your_session_secret
 
 4. Run the application: `npm start or node server.js`
 
-5. Access the application in your web browser at `http://localhost:3000`.
+5. Access the application in your web browser at `http://localhost:3001`.
 
 ## Demo
 
