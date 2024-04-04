@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
-//const { Ability, Abilityscore, Race, Savescore, Skill, Skillscore, Spellsave, Property, Character, Class, Subclass, User, Weapons } = require('../../models');
 const Ability = require('../../models/abilities');
 const Abilityscore = require('../../models/abilityscore');
 const Race = require('../../models/race');
