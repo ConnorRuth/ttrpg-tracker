@@ -38,7 +38,15 @@ Character.init(
         allowNull: false,
     },
     description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT('long'),
+        allowNull: true,
+    },
+    age: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    features:{
+        type: DataTypes.TEXT('long'),
         allowNull: true,
     },
     user_id: {
