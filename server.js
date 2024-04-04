@@ -3,8 +3,8 @@ const session = require('express-session');
 const dotenv = require('dotenv');
 const path = require('path');
 const db = require('./models'); // Import Sequelize models
-const routes = require('./routes');
-
+const routes = require('./controllers');
+const sequelize = require('./config/config');
 // Load environment variables from .env file
 dotenv.config();
 
@@ -18,7 +18,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Session middleware
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const sequelize = db.sequelize;
 const sessionStore = new SequelizeStore({ db: sequelize });
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -31,7 +30,7 @@ app.use(session({
 app.use(routes);
 
 // Start the server
-db.sequelize.sync().then(() => {
+sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
   });

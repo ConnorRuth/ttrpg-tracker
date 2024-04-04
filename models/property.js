@@ -17,7 +17,7 @@ Property.init(
 },
     {
     sequelize,
-    freezeTableName: false,
+    freezeTableName: true,
     modelName: 'property',
     }
 )

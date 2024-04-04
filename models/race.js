@@ -19,7 +19,7 @@ Race.init(
     },
     {
     sequelize,
-    freezeTableName: false,
+    freezeTableName: true,
     modelName: 'race',
     }
 )
