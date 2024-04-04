@@ -40,7 +40,7 @@ Weapon.init(
     },
     {
     sequelize,
-    freezeTableName: false,
+    freezeTableName: true,
     modelName: 'weapon',
     }
 )

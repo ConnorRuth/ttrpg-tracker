@@ -54,7 +54,7 @@ Character.init(
     {
     sequelize,
     freezeTableName: true,
-    modelName: 'class',
+    modelName: 'character',
     }
 )
 

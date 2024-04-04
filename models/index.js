@@ -12,6 +12,8 @@ const Spellsave = require('./savescores');
 const Abilityscore = require('./abilityscore');
 const WeaponProp = require('./proptoweapon');
 const Savescore = require('./savescores');
+
+
 User.hasMany(Character, {
     foreignKey: 'character_id',
     onDelete: 'cascade',
@@ -38,37 +40,45 @@ Skill.belongsToMany(Character, {
   onDelete: 'cascade',
 });
 
+Character.belongsToMany(Skill, {
+  through: Skillscore,
+  foreignKey: 'character_id', 
+  onDelete: 'cascade',
+});
 Ability.belongsToMany(Character, {
   through: Abilityscore,
   foreignKey: 'ability_id',
   onDelete: 'cascade',
 });
-Character.hasOne(Race, {
+Character.belongsTo(Race, {
   foreignKey: 'race_id',
 });
-Character.hasMany(Spellsave, {
+Race.hasMany(Character,{
+  foreignKey: 'race_id'
+})
+Spellsave.belongsToMany(Character, {
   through: Savescore,
   foreignKey: 'savescore_id',
   onDelete: 'cascade',
 });
 Weapon.belongsToMany(Property, {
-  through: WeaponProp,
-  foreignKey: 'property_id',
-  onDelete: 'cascade',
+  through:{
+    model: WeaponProp,
+    unique: false
+  },
+  
 });
 Property.belongsToMany(Weapon, {
-  through: WeaponProp,
-  foreignKey: 'weapon_id',
-  onDelete: 'cascade',
+  through:{
+    model: WeaponProp,
+    unique: false
+  },
 });
-Skill.belongsToMany(Character, {
-  through: Skillscore,
-  foreignKey:'skill_id',
-  onDelete: 'cascade',
-});
+
 Subclass.belongsTo(Class, {
   foreignKey:'class_id',
 });
 Class.hasMany(Subclass,{
   foreignKey:'class_id',
 });
+module.exports = { User, Character, Class, Subclass,  Weapon, Property, Skill,  Ability, Race, Skillscore, Spellsave, Abilityscore,  WeaponProp, Savescore }

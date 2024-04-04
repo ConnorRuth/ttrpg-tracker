@@ -32,7 +32,7 @@ Skillscore.init(
     },
     {
     sequelize,
-    freezeTableName: false,
+    freezeTableName: true,
     modelName: 'skillscore',
     }
 )

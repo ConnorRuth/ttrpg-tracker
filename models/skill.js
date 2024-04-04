@@ -18,7 +18,7 @@ Skill.init(
     },
     {
     sequelize,
-    freezeTableName: false,
+    freezeTableName: true,
     modelName: 'skill',
     }
 )

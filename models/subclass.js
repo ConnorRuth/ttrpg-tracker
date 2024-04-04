@@ -25,7 +25,7 @@ Subclass.init(
     },
     {
     sequelize,
-    freezeTableName: false,
+    freezeTableName: true,
     modelName: 'subclass',
     }
 )
