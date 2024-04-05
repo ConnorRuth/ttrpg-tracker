@@ -5,12 +5,15 @@ const path = require('path');
 const db = require('./models'); // Import Sequelize models
 const routes = require('./controllers');
 const sequelize = require('./config/config');
+const express = require('express');
+const exphbs = require('express-handlebars');
 // Load environment variables from .env file
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
+app.engine('hbs', exphbs({ extname: '.hbs' }));
+app.set('view engine', 'hbs');
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
