@@ -19,9 +19,7 @@ const Weapons = require('../../models/weapons');
 router.get('/', async (req, res) => {
     //find all characters
     try{
-        const charData = await Character.findAll({
-            include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}, {model: Ability}, {model: Abilityscore}, {model: Race}, {model: Savescore}, {model: Skillscore}, {model: Skill}, {model: Spellsave}, {model: Property}],
-        });
+        const charData = await Character.findAll();
         res.status(200).json(charData);
         res.render('character', {
             charData,
@@ -35,9 +33,7 @@ router.get('/', async (req, res) => {
 router.get('/:char_name', async (req,res) => {
     //find one character by its `char_name` value
     try{
-        const charData = await Character.findByPk(req.params.char_name, {
-            include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}, {model: Ability}, {model: Abilityscore}, {model: Race}, {model: Savescore}, {model: Skillscore}, {model: Skill}, {model: Spellsave}, {model: Property}],
-        });
+        const charData = await Character.findByPk(req.params.char_name);
 
         if (!charData) {
             res.status(404).json({ message: 'No Character found with that name.'});
