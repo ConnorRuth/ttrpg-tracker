@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
             user.get({ plain: true })
         );
 
-        res.render('user', {
+        res.render('/user', {
             users,
             loggedIn: req.session.loggedIn,
         });
@@ -33,7 +33,7 @@ router.get('/:id', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-    res.render('user', { user, loggedIn: req.session.loggedIn });
+    res.render('/user', { user, loggedIn: req.session.loggedIn });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -55,7 +55,7 @@ router.put('/:id', withAuth, async (req, res) => {
         }
 
         res.status(200).json(userData);
-        res.render('user', { user, loggedIn: req.session.loggedIn });
+        res.render('/user', { user, loggedIn: req.session.loggedIn });
     } catch (err) {
         res.status(500).json(err);
     }
