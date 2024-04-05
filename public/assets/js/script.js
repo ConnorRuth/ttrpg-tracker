@@ -6,7 +6,6 @@
   
   // Return the total
   return total;
-}
 
 console.log("Rolling a d20:", rollDie(20)); // Roll a single d20
 console.log("Rolling 2d6:", rollDice(2, 6)); // Roll 2 six-sided dice
