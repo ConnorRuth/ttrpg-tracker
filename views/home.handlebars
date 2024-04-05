@@ -1,0 +1,38 @@
+<div class="character-sheet-container">
+        <h2>Character Sheet</h2>
+        <!-- Form for character customization -->
+        <form id="character-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="race">Race:</label>
+            <input type="text" id="race" name="race" required>
+
+            <label for="class">Class:</label>
+            <input type="text" id="class" name="class" required>
+    
+            <label for="abilities">Abilities:</label>
+            <textarea id="abilities" name="abilities" required></textarea>
+    
+            <label for="skills">Skills:</label>
+            <textarea id="skills" name="skills" required></textarea>
+
+            <label for="equipment">Equipment:</label>
+            <textarea id="equipment" name="equipment" required></textarea>
+        </form>
+    
+        <!-- Save button -->
+        <button id="save-button">Save Character</button>
+    
+        <!-- Dropdown for pre-built characters -->
+        <label for="built-characters">Select a built character:</label>
+        <select id="built-characters">
+        {{#each characters}}
+            <option class="character" id="selectedChar">
+                <h2>{{char_name}}</h2>
+            </option>
+        {{/each}}
+        <button id="char-button">Open Sheet</button>
+        </select>
+    </div>    
+    <script src="../../public/assets/js/script.js"></script>
