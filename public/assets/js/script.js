@@ -1,35 +1,3 @@
-// Function to handle rolling a single die
-function rollSingleDie() {
-  const sides = document.getElementById('sides').value; // Get the number of sides from the input field
-  const result = rollDie(sides); // Roll the die
-  document.getElementById('result').innerText = `Result: ${result}`; // Update the result in the HTML
-  function rollDie(sides) {
-    return roll(`1d${sides}`);
-  }
-}
-
-// Function to handle rolling multiple dice
-function rollMultipleDice() {
-  const quantity = document.getElementById('quantity').value; // Get the quantity from the input field
-  const sides = document.getElementById('sides').value; // Get the number of sides from the input field
-  const results = rollDice(quantity, sides); // Roll the dice
-  let resultString = 'Results: ';
-  results.forEach((result, index) => {
-    resultString += `${result}`;
-    if (index < results.length - 1) {
-      resultString += ', ';
-    }
-  });
-  document.getElementById('result').innerText = resultString; // Update the result in the HTML
-}
-
-// Function to roll a single die with the specified number of sides
-function roll(diceNotation) {
-
-// Now you can use rollDie function
-console.log("Rolling a d20:", rollDie(20)); // Roll a single d20
-
-  
   // Roll the dice and calculate the total
   let total = 0;
   for (let i = 0; i < quantity; i++) {
@@ -137,3 +105,24 @@ document.getElementById('save-button').addEventListener('click', saveCharacter);
 
 // Populate the dropdown menu with pre-built characters when the page loads
 window.addEventListener('load', populateBuiltCharacters);
+
+// Add event listener to the button
+document.getElementById('weaponRoll').addEventListener('click', async () => {
+  try {
+      // Fetch the side string from another route
+      const response = await fetch('/get-sides');
+      if (!response.ok) {
+          throw new Error('Failed to fetch side string');
+      }
+      const sideString = await response.text();
+
+      // Assign the side string to a variable
+      const sides = sideString.trim();
+      console.log('Received side string:', sides);
+
+      // Call a function or perform any other actions with the received side string
+      rollDice(sides);
+  } catch (error) {
+      console.error('Error fetching side string:', error);
+  }
+});
