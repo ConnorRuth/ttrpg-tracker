@@ -1,0 +1,51 @@
+.character-sheet-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .character-sheet-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #character-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #character-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #character-form input[type="text"],
+  #character-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding and border are included in width */
+  }
+  
+  #character-form textarea {
+    height: 100px; /* Adjust height as needed */
+  }
+  
+  #character-form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #character-form input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
