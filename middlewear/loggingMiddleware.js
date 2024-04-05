@@ -15,7 +15,7 @@ const requireLogin = (req, res, next) => {
 };
 
 //Apply the middleware to a specific roue
-application.et('/profile', requireLogin, (req,res) => {
+app.get('/profile', requireLogin, (req,res) => {
     //Display user profile information
     res.send('Welcome to your profile');
 });
