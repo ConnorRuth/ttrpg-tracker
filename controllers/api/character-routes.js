@@ -32,15 +32,15 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req,res) => {
-    //find one character by its `id` value
+router.get('/:char_name', async (req,res) => {
+    //find one character by its `char_name` value
     try{
-        const charData = await Character.findByPk(req.params.id, {
+        const charData = await Character.findByPk(req.params.char_name, {
             include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}, {model: Ability}, {model: Abilityscore}, {model: Race}, {model: Savescore}, {model: Skillscore}, {model: Skill}, {model: Spellsave}, {model: Property}],
         });
 
         if (!charData) {
-            res.status(404).json({ message: 'No Character found with that id.'});
+            res.status(404).json({ message: 'No Character found with that name.'});
             return;
         }
 
@@ -60,37 +60,45 @@ router.post('/', withAuth, async (req, res) => {
         const charData = await Character.create(req.body);
 
         res.status(200).json(charData);
+        res.render('character', {
+            charData,
+            loggedIn: req.session.loggedIn,
+        });
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
-    //update a character by its `id` value
+router.put('/:char_name', withAuth, async (req, res) => {
+    //update a character by its `char_name` value
     try {
          const charData = await Character.update(req.body, {
             where: {
-                id: req.params.id,
+                id: req.params.char_name,
             }
          });
 
          if (!charData[0]) {
-            res.status(404).json({ message: 'No Character with this id.'});
+            res.status(404).json({ message: 'No Character with this name.'});
             return;
          }
 
          res.status(200).json(charData);
+         res.render('character', {
+            charData,
+            loggedIn: req.session.loggedIn,
+        });
     } catch (err) {
         res.status(500).json(err);;
     }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:char_name', withAuth, async (req, res) => {
     //delete a character by its `id` value
     try {
         const charData = await Character.destroy({
             where: {
-                id: req.params.id,
+                id: req.params.char_name,
             },
         });
 

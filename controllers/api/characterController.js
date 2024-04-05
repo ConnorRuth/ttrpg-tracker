@@ -55,6 +55,7 @@ router.put('/:id', withAuth, async (req, res) => {
         }
 
         res.status(200).json(userData);
+        res.render('user', { user, loggedIn: req.session.loggedIn });
     } catch (err) {
         res.status(500).json(err);
     }
