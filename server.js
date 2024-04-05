@@ -10,8 +10,8 @@ const exphbs = require('express-handlebars');
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
-app.engine('hbs', exphbs({ extname: '.hbs' }));
+const PORT = process.env.PORT || 3002;
+app.engine('hbs', exphbs({ }));
 app.set('view engine', 'hbs');
 // Middleware
 app.use(express.urlencoded({ extended: true }));
