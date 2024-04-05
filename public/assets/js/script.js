@@ -99,7 +99,24 @@ const button = document.getElementById('char-button');
       }
     }
   };
+  const weaponroll = async (event) => {
+    event.preventDefault();
+  
+    const selectedWeapon = document.getElementById('#selectedweapon').value.trim();
 
+    if (selectedWeapon) {
+      const response = await fetch('/api/character', {
+        method: 'GET',
+        body: JSON.stringify({ selectedWeapon })
+      });
+  
+      if (response.ok) {
+        document.location.replace('/api/character');
+      } else {
+        alert(response.statusText);
+      }
+    }
+  };
 // Function to handle save button click event
 document.getElementById('save-button').addEventListener('click', saveCharacter);
 
