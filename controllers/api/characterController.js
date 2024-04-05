@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
             user.get({ plain: true })
         );
 
-        res.render('character', {
+        res.render('user', {
             users,
             loggedIn: req.session.loggedIn,
         });
@@ -33,7 +33,7 @@ router.get('/:id', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-    res.render('character', { user, loggedIn: req.session.loggedIn });
+    res.render('user', { user, loggedIn: req.session.loggedIn });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -82,7 +82,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        res.redirect('/');
+        res.redirect('/home');
         return;
     }
 
