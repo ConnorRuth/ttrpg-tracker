@@ -23,6 +23,10 @@ router.get('/', async (req, res) => {
             include: [{ model: Class}, {model: Subclass}, {model: User}, {model: Weapons}, {model: Ability}, {model: Abilityscore}, {model: Race}, {model: Savescore}, {model: Skillscore}, {model: Skill}, {model: Spellsave}, {model: Property}],
         });
         res.status(200).json(charData);
+        res.render('character', {
+            charData,
+            loggedIn: req.session.loggedIn,
+        });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -41,6 +45,10 @@ router.get('/:id', async (req,res) => {
         }
 
         res.status(200).json(charData);
+        res.render('character', {
+            charData,
+            loggedIn: req.session.loggedIn,
+        });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -99,7 +107,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        res.redirect('/');
+        res.redirect('/home');
         return;
     }
 

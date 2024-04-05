@@ -9,6 +9,10 @@ router.post('/', async (req, res) => {
         const userData = await User.create(req.body);
 
         res.status(200).json(userData);
+        res.render('home', {
+            userData,
+            loggedIn: req.session.loggedIn,
+        });
     } catch (err) {
         res.status(400).json(err);
     }
