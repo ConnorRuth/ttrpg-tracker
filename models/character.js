@@ -11,6 +11,10 @@ Character.init(
         primaryKey: true,
         autoIncrement: true,
     },
+    char_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     level: {
         type: DataTypes.INTEGER,
         allowNull: false,

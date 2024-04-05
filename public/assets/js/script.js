@@ -111,6 +111,26 @@ function populateBuiltCharacters() {
       selectElement.appendChild(option);
   });
 }
+const button = document.getElementById('char-button');
+
+  const changeToCharacter = async (event) => {
+    event.preventDefault();
+  
+    const selectedChar = document.getElementById('#selectedChar').value.trim();
+
+    if (selectedChar) {
+      const response = await fetch('/api/character', {
+        method: 'GET',
+        body: JSON.stringify({ selectedChar })
+      });
+  
+      if (response.ok) {
+        document.location.replace('/api/character');
+      } else {
+        alert(response.statusText);
+      }
+    }
+  };
 
 // Function to handle save button click event
 document.getElementById('save-button').addEventListener('click', saveCharacter);
