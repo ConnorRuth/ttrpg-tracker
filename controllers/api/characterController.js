@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
             user.get({ plain: true })
         );
 
-        res.render('/user', {
+        res.render('character', {
             users,
             loggedIn: req.session.loggedIn,
         });
@@ -26,14 +26,14 @@ router.get('/', async (req, res) => {
 
 //get one user
 router.get('/:id', withAuth, async (req, res) => {
-    //find a single product by its `id`
+    //find a User character by its `id`
     try {
         const userData = await User.findByPk(req.params.id, {
             include: [{ model: Character }],
     });
 
     const user = userData.get({ plain: true });
-    res.render('/user', { user, loggedIn: req.session.loggedIn });
+    res.render('character', { user, loggedIn: req.session.loggedIn });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -41,7 +41,7 @@ router.get('/:id', withAuth, async (req, res) => {
 });
 
 router.put('/:id', withAuth, async (req, res) => {
-    //update user by `id` value
+    //update User by `id` value
     try {
         const userData = await User.update(req.body, {
             where: {
@@ -55,7 +55,7 @@ router.put('/:id', withAuth, async (req, res) => {
         }
 
         res.status(200).json(userData);
-        res.render('/user', { user, loggedIn: req.session.loggedIn });
+        res.render('character', { user, loggedIn: req.session.loggedIn });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -83,11 +83,11 @@ router.delete('/:id', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        res.redirect('/home');
+        res.redirect('/');
         return;
     }
 
-    res.render('/login');
+    res.render('login');
 });
 
 module.exports = router;
