@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const User = require('../../models/user');
-const withAuth = require('../../utils/auth');
+const User = require('../models/user');
+const withAuth = require('../utils/auth');
 
 //to prevent users not logged in from viewing homepage
 router.get('/', withAuth, async (req, res) => {
@@ -12,7 +12,7 @@ router.get('/', withAuth, async (req, res) => {
 
         const users = userData.map((user) => user.get ({ plain: true }));
 
-        res.render('/home', {
+        res.render('home', {
             users,
             logged_in: req.session.logged_in,
         });
@@ -24,11 +24,19 @@ router.get('/', withAuth, async (req, res) => {
 //if session already exists, redirect to homepage
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/home');
+        res.redirect('home');
         return;
     }
 
-    res.render('/login');
+    res.render('login');
 });
 
+router.get('/signup', (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('home');
+        return;
+    }
+
+    res.render('signup');
+});
 module.exports = router;

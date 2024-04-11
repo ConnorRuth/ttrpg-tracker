@@ -83,11 +83,11 @@ router.delete('/:id', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        res.redirect('/home');
+        res.redirect('home');
         return;
     }
 
-    res.render('/login');
+    res.render('login');
 });
 
 module.exports = router;
