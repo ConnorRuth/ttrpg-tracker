@@ -10,9 +10,11 @@ const exphbs = require('express-handlebars');
 dotenv.config();
 
 const app = express();
+
+const hbs = exphbs.create({});
 const PORT = process.env.PORT || 3002;
-app.engine('hbs', exphbs({ }));
-app.set('view engine', 'hbs');
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -23,6 +25,12 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sessionStore = new SequelizeStore({ db: sequelize });
 app.use(session({
   secret: process.env.SESSION_SECRET,
+  cookie: {
+    maxAge: 300000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
   resave: false,
   saveUninitialized: false,
   store: sessionStore
