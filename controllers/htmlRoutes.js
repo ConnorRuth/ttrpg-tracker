@@ -12,54 +12,10 @@ router.get('/', withAuth, async (req, res) => {
 
         const users = userData.map((user) => user.get ({ plain: true }));
 
-        res.render('/', {
+        res.render('home', {
             users,
-            logged_in: true,
+            logged_in: req.session.logged_in,
         });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-router.get('/', withAuth, async (req, res) => {
-    try{
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            //include: //want to include all the models used in home handlebar
-        });
-
-        const user = userData.get({ plain: true });
-
-        res.render('/', {
-            ...user,
-            logged_in: true
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-router.get('/character', withAuth, async (req, res) => {
-    try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            //include: //want to include models used in character handlebar
-        });
-        const user = userData.get({ plain: true });
-
-        res.render('character', {
-            ...user,
-            logged_in: true
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-router.get('/signup', (req, res) => {
-    try {
-        res.render('signup');
-        return;   
     } catch (err) {
         res.status(500).json(err);
     }
@@ -68,11 +24,19 @@ router.get('/signup', (req, res) => {
 //if session already exists, redirect to homepage
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/');
+        res.redirect('home');
         return;
     }
 
     res.render('login');
 });
 
+router.get('/signup', (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('home');
+        return;
+    }
+
+    res.render('signup');
+});
 module.exports = router;
