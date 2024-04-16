@@ -3,7 +3,7 @@ const  User  = require('../../models/user');
 
 //The `/api/users` endpoint
 
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
     //create a new user
     try {
         const userData = await User.create(req.body);
@@ -14,6 +14,7 @@ router.post('/', async (req, res) => {
         })
         res.status(200).json(userData);
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });
@@ -42,6 +43,7 @@ router.post('/login', async (req, res) => {
         });
 
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });
