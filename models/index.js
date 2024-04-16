@@ -50,6 +50,11 @@ Ability.belongsToMany(Character, {
   foreignKey: 'ability_id',
   onDelete: 'cascade',
 });
+Character.belongsToMany(Ability, {
+  through: Abilityscore,
+  foreignKey: 'character_id',
+  onDelete: 'cascade',
+});
 Character.belongsTo(Race, {
   foreignKey: 'race_id',
 });
