@@ -1,6 +1,6 @@
 const User = require('./user');
 const Character = require('./character');
-const Class = require('./class');
+const CharClass = require('./class');
 const Subclass = require('./subclass');
 const Weapon = require('./weapons');
 const Property = require('./property');
@@ -27,7 +27,7 @@ Character.hasMany(Weapon, {
     foreignKey: 'weapon_id',
 });
 
-Character.hasOne(Class, {
+Character.hasOne(CharClass, {
     foreignKey: 'class_id',
 });
 
@@ -80,10 +80,10 @@ Property.belongsToMany(Weapon, {
   },
 });
 
-Subclass.belongsTo(Class, {
+Subclass.belongsTo(CharClass, {
   foreignKey:'class_id',
 });
-Class.hasMany(Subclass,{
+CharClass.hasMany(Subclass,{
   foreignKey:'class_id',
 });
-module.exports = { User, Character, Class, Subclass,  Weapon, Property, Skill,  Ability, Race, Skillscore, Spellsave, Abilityscore,  WeaponProp, Savescore }
+module.exports = { User, Character, CharClass, Subclass,  Weapon, Property, Skill,  Ability, Race, Skillscore, Spellsave, Abilityscore,  WeaponProp, Savescore }

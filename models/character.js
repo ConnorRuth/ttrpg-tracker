@@ -22,7 +22,7 @@ Character.init(
     class_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'class',
+            model: 'charclass',
             key: 'id',
         }
     },

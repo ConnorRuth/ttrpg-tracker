@@ -7,19 +7,29 @@
 
             <label for="level">Level:</label>
             <input type="number" id="level" name="level" required><br><br>
+        <select id="avail-classes">
+        {{#each availClass as | avClass |}}
+            <option class="availClass" id="selectedclass" value={{avClass.id}}>
+                <h2>{{avClass.class_name}}</h2>
+            </option>
+        {{/each}}
+        </select>
 
-            <label for="class">Class:</label>
-            <input type="text" id="class" name="class" required>
-
-            <label for="race">Race:</label>
-            <input type="text" id="race" name="race" required>
+        <select id="avail-races">
+        {{#each races as | race |}}
+            <option class="availRace" id="selectedrace" value={{race.id}}>
+                <h2>{{{race.race_name}}}</h2>
+            </option>
+        {{/each}}
+        </select>
+            
 
             <label for="maxHP">Max HP:</label>
             <input type="number" id="maxHP" name="maxHP" required><br><br>
 
             <label for="currentHP">Current HP:</label>
             <input type="number" id="currentHP" name="currentHP" required><br><br>
-
+ 
             <label for="description">Description:</label>
             <textarea id="description" name="description" required></textarea><br><br>
 
@@ -41,7 +51,6 @@
                 <h2>{{character.char_name}}</h2>
             </option>
         {{/each}}
-        
         </select>
         <button id="char-button">Open Sheet</button>
     </div>    
