@@ -6,6 +6,7 @@ const PORT = 3001;
 //User login middlewear
 const requireLogin = (req, res, next) => {
     if (req.user) {
+
         //User is authenticated, proceed to the next middleware 
         next();
     } else {
