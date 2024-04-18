@@ -40,7 +40,7 @@ router.get('/:char_name', async (req,res) => {
             return;
         }
 
-        res.status(200).json(charData);
+        
         res.render('character', {
             charData,
             loggedIn: req.session.loggedIn,
@@ -51,11 +51,16 @@ router.get('/:char_name', async (req,res) => {
 });
 
 router.post('/', withAuth, async (req, res) => {
+    
+    
     //create a new character
     try {
-        const charData = await Character.create(req.body);
-
-        res.status(200).json(charData);
+        const loggedInUserId = req.session.user_id; 
+        const charData = await Character.create({
+            ...req.body,
+            user_id: loggedInUserId
+    });
+    
         res.render('character', {
             charData,
             loggedIn: req.session.loggedIn,
@@ -117,5 +122,7 @@ router.get('/login', (req, res) => {
 
     res.render('login');
 });
+
+
 
 module.exports = router;

@@ -4,10 +4,79 @@
   <p>{{subclass}}</p>
   <p>{{race}}</p>
   <p>{{age}}</p>
+   <div class="ability-container">
+    {{#each abilities}}
+      <div class="ability-item">
+        <select class="ability-dropdown">
+          <option value="{{this}}">{{this}}</option>
+        </select>
+        <input type="number" class="ability-number" placeholder="Enter number">
+      </div>
+    {{/each}}
+    </div>
+     <div class="ability-container">
+    {{#each abilities}}
+      <div class="ability-item">
+        <select class="ability-dropdown">
+          <option value="{{this}}">{{this}}</option>
+        </select>
+        <input type="number" class="ability-number" placeholder="Enter number">
+      </div>
+    {{/each}}
+    </div>
+     <div class="ability-container">
+    {{#each abilities}}
+      <div class="ability-item">
+        <select class="ability-dropdown">
+          <option value="{{this}}">{{this}}</option>
+        </select>
+        <input type="number" class="ability-number" placeholder="Enter number">
+      </div>
+    {{/each}}
+    </div>
+     <div class="ability-container">
+    {{#each abilities}}
+      <div class="ability-item">
+        <select class="ability-dropdown">
+          <option value="{{this}}">{{this}}</option>
+        </select>
+        <input type="number" class="ability-number" placeholder="Enter number">
+      </div>
+    {{/each}}
+    </div>
+     <div class="ability-container">
+    {{#each abilities}}
+      <div class="ability-item">
+        <select class="ability-dropdown">
+          <option value="{{this}}">{{this}}</option>
+        </select>
+        <input type="number" class="ability-number" placeholder="Enter number">
+      </div>
+    {{/each}}
+    </div>
+     <div class="ability-container">
+    {{#each abilities}}
+      <div class="ability-item">
+        <select class="ability-dropdown">
+          <option value="{{this}}">{{this}}</option>
+        </select>
+        <input type="number" class="ability-number" placeholder="Enter number">
+      </div>
+    {{/each}}
+    </div>
+
   <p>{{maxHP}}</p>
   <p>{{currentHP}}</p>
   <p>{{description}}</p>
   <p>{{features}}</p>
+<select id="skillsDropdown">
+    {{#each skills}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
+  <ul id="skillsList">
+    <!-- Selected skills will be added here dynamically -->
+  </ul>
 </div>
 
 <div class="container">

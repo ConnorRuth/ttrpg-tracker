@@ -43,19 +43,20 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/character', withAuth, async (req, res) => {
+router.get('/character/:id', withAuth, async (req, res) => {
     try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            //include: //want to include models used in character handlebar
+        const charData = await Character.findByPk(req.params.id , {
+            include: [{ model: Race}, {model: Class}, {model: Ability, through: Abilityscore}, {model: Skill, through: Skillscore}, {model: Weapons}],
         });
-        const user = userData.get({ plain: true });
 
+
+        const char = charData.get({ plain: true });
         res.render('character', {
-            ...user,
+            ...char,
             logged_in: true
         });
     } catch (err) {
+        console.log(err);
         res.status(500).json(err);
     }
 });
@@ -67,9 +68,10 @@ router.get('/home', withAuth, async (req, res) => {
         });
 
 
-        const char = charData.map(char => char.get({ plain: true }));
+        const characters = charData.map(char => char.get({ plain: true }));
+        console.log(characters);
         res.render('home', {
-            ...char,
+            characters,
             logged_in: true
         });
     } catch (err) {

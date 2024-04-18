@@ -1,38 +1,49 @@
 <div class="character-sheet-container">
-        <h2>Character Sheet</h2>
+        <h2>Create a new character!</h2>
         <!-- Form for character customization -->
         <form id="character-form">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="race">Race:</label>
-            <input type="text" id="race" name="race" required>
+            <label for="level">Level:</label>
+            <input type="number" id="level" name="level" required><br><br>
 
             <label for="class">Class:</label>
             <input type="text" id="class" name="class" required>
-    
-            <label for="abilities">Abilities:</label>
-            <textarea id="abilities" name="abilities" required></textarea>
-    
-            <label for="skills">Skills:</label>
-            <textarea id="skills" name="skills" required></textarea>
 
-            <label for="weapo">Weapons:</label>
-            <textarea id="equipment" name="equipment" required></textarea>
+            <label for="race">Race:</label>
+            <input type="text" id="race" name="race" required>
+
+            <label for="maxHP">Max HP:</label>
+            <input type="number" id="maxHP" name="maxHP" required><br><br>
+
+            <label for="currentHP">Current HP:</label>
+            <input type="number" id="currentHP" name="currentHP" required><br><br>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea><br><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required><br><br>
+
+            <label for="features">Features:</label>
+            <textarea id="features" name="features" required></textarea><br><br>
         </form>
     
         <!-- Save button -->
         <button id="save-button">Save Character</button>
-    
+
         <!-- Dropdown for pre-built characters -->
         <label for="built-characters">Select a built character:</label>
         <select id="built-characters">
-        {{#each characters}}
-            <option class="character" id="selectedChar">
-                <h2>{{char_name}}</h2>
+        {{#each characters as | character |}}
+            <option class="character" id="selectedChar" value={{character.id}}>
+                <h2>{{character.char_name}}</h2>
             </option>
         {{/each}}
-        <button id="char-button">Open Sheet</button>
+        
         </select>
+        <button id="char-button">Open Sheet</button>
     </div>    
+    <script src="/assets/js/home.js"></script>
     <script src="/assets/js/script.js"></script>
