@@ -1,77 +1,28 @@
 <div class="">
-  <h2>{{char_name}}</h2>
-  <p>{{class}}</p>
+  <h2>Name: {{char_name}}</h2>
+  <p>Class:{{charclass.class_name}}</p>
   <p>{{subclass}}</p>
-  <p>{{race}}</p>
-  <p>{{age}}</p>
+  <p>Race: {{race.race_name}}</p>
+  <p>Age: {{age}}</p>
    <div class="ability-container">
-    {{#each abilities}}
+    {{#each abilities as | ability|}}
       <div class="ability-item">
         <select class="ability-dropdown">
-          <option value="{{this}}">{{this}}</option>
+          <option value="{{ability.id}}">{{ability.Ability_name}}</option>
         </select>
         <input type="number" class="ability-number" placeholder="Enter number">
       </div>
     {{/each}}
     </div>
-     <div class="ability-container">
-    {{#each abilities}}
-      <div class="ability-item">
-        <select class="ability-dropdown">
-          <option value="{{this}}">{{this}}</option>
-        </select>
-        <input type="number" class="ability-number" placeholder="Enter number">
-      </div>
-    {{/each}}
-    </div>
-     <div class="ability-container">
-    {{#each abilities}}
-      <div class="ability-item">
-        <select class="ability-dropdown">
-          <option value="{{this}}">{{this}}</option>
-        </select>
-        <input type="number" class="ability-number" placeholder="Enter number">
-      </div>
-    {{/each}}
-    </div>
-     <div class="ability-container">
-    {{#each abilities}}
-      <div class="ability-item">
-        <select class="ability-dropdown">
-          <option value="{{this}}">{{this}}</option>
-        </select>
-        <input type="number" class="ability-number" placeholder="Enter number">
-      </div>
-    {{/each}}
-    </div>
-     <div class="ability-container">
-    {{#each abilities}}
-      <div class="ability-item">
-        <select class="ability-dropdown">
-          <option value="{{this}}">{{this}}</option>
-        </select>
-        <input type="number" class="ability-number" placeholder="Enter number">
-      </div>
-    {{/each}}
-    </div>
-     <div class="ability-container">
-    {{#each abilities}}
-      <div class="ability-item">
-        <select class="ability-dropdown">
-          <option value="{{this}}">{{this}}</option>
-        </select>
-        <input type="number" class="ability-number" placeholder="Enter number">
-      </div>
-    {{/each}}
-    </div>
+    
 
-  <p>{{maxHP}}</p>
-  <p>{{currentHP}}</p>
-  <p>{{description}}</p>
-  <p>{{features}}</p>
+  <p>Max HP:{{maxHP}}</p>
+  <p>Current HP: {{currentHP}}</p>
+  <p>Description:{{description}}</p>
+  <p>Features: {{features}}</p>
 <select id="skillsDropdown">
-    {{#each skills}}
-      <option value="{{this}}">{{this}}</option>
+    {{#each skills as |skill|}}
+      <option value="{{skill.id}}">{{skill.Skill_name}}</option>
     {{/each}}
   </select>
   <ul id="skillsList">
@@ -81,9 +32,9 @@
 
 <div class="container">
         <h1>Dice Roller</h1>
-       {{#each weapon}}
-            <option class="weapon" id="selectedweapon">
-                <h2>{{name}}</h2>
+       {{#each weapons as |weapon|}}
+            <option class="weapon" id="selectedweapon" value={{weapon.damage}}>
+                <h2>{{weapon.name}} damage type: {{weapon.damage_type}}</h2>
             </option>
         {{/each}}
         <button id ="weaponRoll">Roll Single Die</button>

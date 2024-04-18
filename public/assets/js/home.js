@@ -5,6 +5,8 @@ const charCreateHandler = async (event) => {
     const formData = {
         char_name: document.getElementById('name').value,
         level: parseInt(document.getElementById('level').value),
+        class_id: parseInt(document.getElementById('selectedclass').value),
+        race_id: parseInt(document.getElementById('selectedrace').value),
         maxHP: parseInt(document.getElementById('maxHP').value),
         currentHP: parseInt(document.getElementById('currentHP').value),
         description: document.getElementById('description').value,
@@ -23,7 +25,6 @@ const charCreateHandler = async (event) => {
 
         if (response.ok) {
             console.log('Character created successfully!');
-            window.document.location.replace("/character");
         } else {
             console.error('Failed to create character.');
         }

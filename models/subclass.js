@@ -18,7 +18,7 @@ Subclass.init(
     associated_class: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'class',
+            model: 'charclass',
             key: 'id',
         }
     }

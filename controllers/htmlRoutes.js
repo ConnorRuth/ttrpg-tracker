@@ -8,7 +8,7 @@ const Skillscore = require('../models/skillscore');
 const Spellsave = require('../models/spellsaves');
 const Property = require('../models/property');
 const Character = require('../models/character');
-const Class = require('../models/class');
+const CharClass = require('../models/class');
 const Subclass = require('../models/subclass');
 const User = require('../models/user');
 const Weapons = require('../models/weapons');
@@ -46,12 +46,19 @@ router.get('/login', (req, res) => {
 router.get('/character/:id', withAuth, async (req, res) => {
     try {
         const charData = await Character.findByPk(req.params.id , {
-            include: [{ model: Race}, {model: Class}, {model: Ability, through: Abilityscore}, {model: Skill, through: Skillscore}, {model: Weapons}],
+            include: [{ model: Race}, {model: CharClass}, {model: Ability, through: Abilityscore}, {model: Skill, through: Skillscore}, {model: Weapons}],
         });
-
-
+        const abilities = await Ability.findAll( { raw: true});
+        console.log(abilities);
+        const skills = await Skill.findAll({raw: true});
+        console.log(skills);
+        const weapons = await Weapons.findAll({raw: true});
         const char = charData.get({ plain: true });
+        console.log(char);
         res.render('character', {
+            weapons,
+            skills,
+            abilities,
             ...char,
             logged_in: true
         });
@@ -64,13 +71,16 @@ router.get('/character/:id', withAuth, async (req, res) => {
 router.get('/home', withAuth, async (req, res) => {
     try {
         const charData = await Character.findAll({
-            include: [{ model: Race}, {model: Class}, {model: Ability, through: Abilityscore}, {model: Skill, through: Skillscore}, {model: Weapons}],
+            include: [{ model: Race}, {model: CharClass}, {model: Ability, through: Abilityscore}, {model: Skill, through: Skillscore}, {model: Weapons}],
         });
-
-
+        const availClass = await CharClass.findAll({raw: true});
+        const races = await Race.findAll({raw: true}); 
+console.log(races);
         const characters = charData.map(char => char.get({ plain: true }));
-        console.log(characters);
+        
         res.render('home', {
+            races,
+            availClass,
             characters,
             logged_in: true
         });
