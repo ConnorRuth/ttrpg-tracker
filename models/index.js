@@ -27,7 +27,7 @@ Character.hasMany(Weapon, {
     foreignKey: 'weapon_id',
 });
 
-Character.hasOne(CharClass, {
+Character.belongsTo(CharClass, {
     foreignKey: 'charclass_id',
 });
 
@@ -36,24 +36,16 @@ Character.hasOne(Subclass, {
 });
 Skill.belongsToMany(Character, {
   through: Skillscore,
-  foreignKey: 'skill_id', 
-  onDelete: 'cascade',
 });
 
 Character.belongsToMany(Skill, {
   through: Skillscore,
-  foreignKey: 'character_id', 
-  onDelete: 'cascade',
 });
 Ability.belongsToMany(Character, {
   through: Abilityscore,
-  foreignKey: 'ability_id',
-  onDelete: 'cascade',
 });
 Character.belongsToMany(Ability, {
   through: Abilityscore,
-  foreignKey: 'character_id',
-  onDelete: 'cascade',
 });
 Character.belongsTo(Race, {
   foreignKey: 'race_id',
@@ -63,8 +55,6 @@ Race.hasMany(Character,{
 })
 Spellsave.belongsToMany(Character, {
   through: Savescore,
-  foreignKey: 'savescore_id',
-  onDelete: 'cascade',
 });
 Weapon.belongsToMany(Property, {
   through:{
