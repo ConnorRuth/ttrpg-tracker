@@ -28,7 +28,7 @@ Character.hasMany(Weapon, {
 });
 
 Character.hasOne(CharClass, {
-    foreignKey: 'class_id',
+    foreignKey: 'charclass_id',
 });
 
 Character.hasOne(Subclass, {
@@ -81,9 +81,9 @@ Property.belongsToMany(Weapon, {
 });
 
 Subclass.belongsTo(CharClass, {
-  foreignKey:'class_id',
+  foreignKey:'charclass_id',
 });
 CharClass.hasMany(Subclass,{
-  foreignKey:'class_id',
+  foreignKey:'charclass_id',
 });
 module.exports = { User, Character, CharClass, Subclass,  Weapon, Property, Skill,  Ability, Race, Skillscore, Spellsave, Abilityscore,  WeaponProp, Savescore }
