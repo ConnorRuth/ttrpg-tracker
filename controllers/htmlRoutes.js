@@ -74,6 +74,7 @@ router.get('/home', withAuth, async (req, res) => {
             include: [{ model: Race}, {model: CharClass}, {model: Ability, through: Abilityscore}, {model: Skill, through: Skillscore}, {model: Weapons}],
         });
         const availClass = await CharClass.findAll({raw: true});
+        
         const races = await Race.findAll({raw: true}); 
 console.log(races);
         const characters = charData.map(char => char.get({ plain: true }));
