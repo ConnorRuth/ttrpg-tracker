@@ -46,19 +46,13 @@ router.get('/login', (req, res) => {
 router.get('/character/:id', withAuth, async (req, res) => {
     try {
         const charData = await Character.findByPk(req.params.id , {
-            include: [{ model: Race}, {model: CharClass}, {model: Ability, through: Abilityscore}, {model: Skill, through: Skillscore}, {model: Weapons}],
+            include: [{ model: Race}, {model: CharClass}],
         });
-        const abilities = await Ability.findAll( { raw: true});
-        console.log(abilities);
-        const skills = await Skill.findAll({raw: true});
-        console.log(skills);
-        const weapons = await Weapons.findAll({raw: true});
+        
         const char = charData.get({ plain: true });
         console.log(char);
         res.render('character', {
-            weapons,
-            skills,
-            abilities,
+           
             ...char,
             logged_in: true
         });
@@ -71,7 +65,7 @@ router.get('/character/:id', withAuth, async (req, res) => {
 router.get('/home', withAuth, async (req, res) => {
     try {
         const charData = await Character.findAll({
-            include: [{ model: Race}, {model: CharClass}, {model: Ability, through: Abilityscore}, {model: Skill, through: Skillscore}, {model: Weapons}],
+            include: [{ model: Race}, {model: CharClass}],
         });
         const availClass = await CharClass.findAll({raw: true});
         

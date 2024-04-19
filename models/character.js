@@ -19,7 +19,7 @@ Character.init(
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    class_id: {
+    charclass_id: {
         type: DataTypes.INTEGER,
         references: {
             model: 'charclass',

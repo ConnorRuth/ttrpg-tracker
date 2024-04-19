@@ -5,7 +5,7 @@ const charCreateHandler = async (event) => {
     const formData = {
         char_name: document.getElementById('name').value,
         level: parseInt(document.getElementById('level').value),
-        class_id: parseInt(document.getElementById('avail-classes').value),
+        charclass_id: parseInt(document.getElementById('avail-classes').value),
         race_id: parseInt(document.getElementById('avail-races').value),
         maxHP: parseInt(document.getElementById('maxHP').value),
         currentHP: parseInt(document.getElementById('currentHP').value),
