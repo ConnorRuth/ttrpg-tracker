@@ -25,6 +25,7 @@ const charCreateHandler = async (event) => {
 
         if (response.ok) {
             console.log('Character created successfully!');
+            location.reload();
         } else {
             console.error('Failed to create character.');
         }
