@@ -49,11 +49,13 @@ router.get('/character/:id', withAuth, async (req, res) => {
             include: [{ model: Race}, {model: CharClass}],
         });
         
+        const skills = await  Skill.findAll({raw:true
+        });
         const char = charData.get({ plain: true });
         console.log(char);
         res.render('character', {
-           
-            ...char,
+           skills,
+            ...char, 
             logged_in: true
         });
     } catch (err) {
