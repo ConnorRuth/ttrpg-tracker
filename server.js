@@ -26,7 +26,7 @@ const sessionStore = new SequelizeStore({ db: sequelize });
 app.use(session({
   secret: process.env.SESSION_SECRET,
   cookie: {
-    maxAge: 300000,
+    maxAge: 86400000,
     httpOnly: true,
     secure: false,
     sameSite: 'strict',
