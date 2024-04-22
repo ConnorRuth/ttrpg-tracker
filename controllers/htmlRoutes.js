@@ -48,12 +48,13 @@ router.get('/character/:id', withAuth, async (req, res) => {
         const charData = await Character.findByPk(req.params.id , {
             include: [{ model: Race}, {model: CharClass}],
         });
-        
+        const abilities = await Ability.findAll({ raw: true});
         const skills = await  Skill.findAll({raw:true
         });
         const char = charData.get({ plain: true });
         console.log(char);
         res.render('character', {
+            abilities,
            skills,
             ...char, 
             logged_in: true
@@ -72,7 +73,6 @@ router.get('/home', withAuth, async (req, res) => {
         const availClass = await CharClass.findAll({raw: true});
         
         const races = await Race.findAll({raw: true}); 
-console.log(races);
         const characters = charData.map(char => char.get({ plain: true }));
         
         res.render('home', {
