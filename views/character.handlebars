@@ -25,10 +25,12 @@
     {{#each skills as |skill|}}
       <option value="{{skill.id}}">{{skill.skill_name}}</option>
     {{/each}}
-  </select>
-
+</select>
   <ul id="skillsList">
     <!-- Selected skills will be added here dynamically -->
+    {{#if skills}}
+    <li value="{{skills.id}}">{{skills.skills_name}}</li>
+    {{/if}}
   </ul>
 </div>
 <button id="charsheet-button">Save changes</button>
@@ -43,5 +45,6 @@
         <button id ="weaponRoll">Roll Single Die</button>
         
         <div id="result"></div>
-    </div>
-  <script src="/assets/js/char.js"></script>
+</div>
+
+<script src="/assets/js/char.js"></script>
