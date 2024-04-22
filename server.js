@@ -6,6 +6,7 @@ const db = require('./models'); // Import Sequelize models
 const routes = require('./controllers');
 const sequelize = require('./config/config');
 const exphbs = require('express-handlebars');
+const hbsHelpers = require('./utils/hbshelper');
 // Load environment variables from .env file
 dotenv.config();
 

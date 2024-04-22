@@ -40,20 +40,19 @@ const charSaveHandler = async (event) => {
     console.log(abilityFormData);
     console.log(charFormData);
     try {
-        for(i=0; i<abilityFormData.length; i++){
         const response = await fetch('/api/character/', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify( abilityFormData[i])
+            body: JSON.stringify( abilityFormData)
         });
 
         if (response.ok) {
             console.log('Character saved successfully!');
         } else {
             console.error('Failed to save character.');
-        }}
+        }
     } catch (error) {
         console.error('Error saving character:', error);
     }
