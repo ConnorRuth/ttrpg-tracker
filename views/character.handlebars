@@ -23,7 +23,7 @@
   <p id="features" value="{{features}}">Features: {{features}}</p>
 <select id="skillsDropdown">
     {{#each skills as |skill|}}
-      <option value="{{skill.id}}">{{skill.skill_name}}</option>
+      <option id="skillDrop" value="{{skill.id}}">{{skill.skill_name}}</option>
     {{/each}}
 </select>
   <ul id="skillsList">
@@ -48,3 +48,4 @@
 </div>
 
 <script src="/assets/js/char.js"></script>
+{{!-- <script src="/assets/js/script.js"></script> --}}

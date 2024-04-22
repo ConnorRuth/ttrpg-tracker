@@ -97,8 +97,10 @@ router.put('/', withAuth, async (req, res) => {
     console.log(req.body);
         const characterId = req.body.character_id;
         const abilityId = req.body.ability_id;
+        const skillId = req.body.skill_id;
       console.log(characterId);
       console.log(abilityId);
+      console.log(skillId);
         try {
           const abilities = await Abilityscore.findOne({
             where: {
@@ -116,7 +118,24 @@ router.put('/', withAuth, async (req, res) => {
         } catch (error) {
           console.error('Error querying Abilities:', error);
         }
-});
+        try {
+            const skills = await Skill.findOne({
+                where: {
+                    id: skillId,
+                    character_id: characterId,
+                }
+            });
+            if (!skills) {
+                const newSkill = await Skillscore.create(req.body);
+                console.log(`new skill added ${newSkill}`);
+            } else {
+                const updateSkill = await Skillscore.update(req.body, {where: {id: skills.id} });
+                console.log(`new skill added ${updateSkill}`);
+            }
+        } catch (error) {
+            console.error(`Error querying skills:`, error);
+        }
+    });
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {

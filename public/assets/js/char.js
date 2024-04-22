@@ -62,3 +62,33 @@ const charSaveHandler = async (event) => {
     .getElementById('charsheet-button')
     .addEventListener('click', charSaveHandler);
 
+const updateCharSkill = async (event) => {
+    event.preventDefault();
+    const skillUpdate = {
+        skill_Id: document.querySelector('#skillsDropdown option:checked').value,
+    };
+    console.log(skillUpdate);
+
+    try {
+        const response = await fetch('/api/skill/', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(skillUpdate)
+        });
+
+        if (response.ok) {
+            console.log('Character skills successfully updated!');
+            location.reload();
+        } else {
+            console.error('Failed to update skills.');
+        }
+    } catch (error) {
+        console.error('Error updating skills.', error);
+    }
+};
+
+document
+    .getElementById('charsheet-button')
+    .addEventListener('click', updateCharSkill);
