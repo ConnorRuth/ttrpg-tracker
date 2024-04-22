@@ -25,18 +25,20 @@
   <p id="currentHP" value="{{currentHP}}">Current HP: {{currentHP}}</p>
   <p>Description:{{description}}</p>
   <p id="features" value="{{features}}">Features: {{features}}</p>
-<select id="skillsDropdown">
+   <div class="skill-container">
     {{#each skills as |skill|}}
-      <option id="skillDrop" value="{{skill.id}}">{{skill.skill_name}}</option>
+      <div class="skill-item" >
+        <select class="skill-dropdown" id="skill{{skill.id}}">
+          <option value="{{skill.id}}">{{skill.skill_name}}</option>
+        </select>
+        <input id="skill{{skill.id}}score" type="number" class="skill-number" placeholder="Enter number">
+        </input>
+        <div>
+             
+        </div>
+      </div>
     {{/each}}
-</select>
-  <ul id="skillsList">
-    <!-- Selected skills will be added here dynamically -->
-    {{#if skills}}
-    <li value="{{skills.id}}">{{skills.skills_name}}</li>
-    {{/if}}
-  </ul>
-</div>
+    </div>
 <button id="charsheet-button">Save changes</button>
 
 <div class="container">

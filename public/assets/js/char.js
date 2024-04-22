@@ -40,7 +40,7 @@ const charSaveHandler = async (event) => {
     console.log(abilityFormData);
     console.log(charFormData);
     try {
-        const response = await fetch('/api/character/', {
+        const response = await fetch('/api/character/ability', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -63,23 +63,96 @@ const charSaveHandler = async (event) => {
 
 const updateCharSkill = async (event) => {
     event.preventDefault();
-    const skillUpdate = {
-        skill_Id: document.querySelector('#skillsDropdown option:checked').value,
-    };
-    console.log(skillUpdate);
+    const charIdentifier = parseInt(document.location.pathname.split('/')[2]);
+    
+    const skillFormData = [
+    {
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill1').value),
+        score: parseInt(document.getElementById('skill1score').value)
+    },
+    {
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill2').value),
+        score: parseInt(document.getElementById('skill2score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill3').value),
+        score: parseInt(document.getElementById('skill3score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill4').value),
+        score: parseInt(document.getElementById('skill4score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill5').value),
+        score: parseInt(document.getElementById('skill5score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill6').value),
+        score: parseInt(document.getElementById('skill6score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill7').value),
+        score: parseInt(document.getElementById('skill7score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill8').value),
+        score: parseInt(document.getElementById('skill8score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill9').value),
+        score: parseInt(document.getElementById('skill9score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill10').value),
+        score: parseInt(document.getElementById('skill10score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill11').value),
+        score: parseInt(document.getElementById('skill11score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill12').value),
+        score: parseInt(document.getElementById('skill12score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill13').value),
+        score: parseInt(document.getElementById('skill13score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill14').value),
+        score: parseInt(document.getElementById('skill14score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill15').value),
+        score: parseInt(document.getElementById('skill15score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill16').value),
+        score: parseInt(document.getElementById('skill16score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill17').value),
+        score: parseInt(document.getElementById('skill17score').value)
+    },{
+        character_id: charIdentifier,
+        skill_id: parseInt(document.getElementById('skill18').value),
+        score: parseInt(document.getElementById('skill18score').value)
+    },
+    ]
 
     try {
-        const response = await fetch('/api/skill/', {
+        const response = await fetch('/api/character/skill', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(skillUpdate)
+            body: JSON.stringify(skillFormData)
         });
 
         if (response.ok) {
             console.log('Character skills successfully updated!');
-            location.reload();
         } else {
             console.error('Failed to update skills.');
         }
