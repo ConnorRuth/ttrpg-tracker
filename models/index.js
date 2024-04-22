@@ -57,17 +57,11 @@ Spellsave.belongsToMany(Character, {
   through: Savescore,
 });
 Weapon.belongsToMany(Property, {
-  through:{
-    model: WeaponProp,
-    unique: false
-  },
+  through: WeaponProp,
   
 });
 Property.belongsToMany(Weapon, {
-  through:{
-    model: WeaponProp,
-    unique: false
-  },
+  through: WeaponProp,
 });
 
 Subclass.belongsTo(CharClass, {

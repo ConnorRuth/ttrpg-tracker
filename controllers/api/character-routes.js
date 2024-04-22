@@ -96,10 +96,10 @@ router.put('/', withAuth, async (req, res) => {
     //
     
         const abData = req.body;
-        console.log(abData);
+    
         try {
         for (data of abData) {
-            console.log(data);
+            
           const abilities = await Abilityscore.findOne({
             where: {
               character_id: data.character_id,

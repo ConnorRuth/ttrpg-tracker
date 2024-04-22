@@ -13,6 +13,7 @@ const Subclass = require('../models/subclass');
 const User = require('../models/user');
 const Weapons = require('../models/weapons');
 const withAuth = require('../utils/auth');
+const WeaponProp = require('../models/proptoweapon');
 
 //to prevent users not logged in from viewing homepage
 router.get('/', withAuth, async (req, res) => {
@@ -48,6 +49,10 @@ router.get('/character/:id', withAuth, async (req, res) => {
         const charData = await Character.findByPk(req.params.id , {
             include: [{ model: Race}, {model: CharClass}],
         });
+        const weapons = await Weapons.findAll({raw:true,
+        include: [ {model: Property, through:WeaponProp}
+           
+       ]});
         const abilities = await Ability.findAll({ raw: true});
     
          const abScores = await Abilityscore.findAll({ 
@@ -62,6 +67,7 @@ router.get('/character/:id', withAuth, async (req, res) => {
         console.log(abScores);
         console.log(char);
         res.render('character', {
+             weapons,
             abScores,
             abilities,
            skills,
