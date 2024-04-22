@@ -94,25 +94,25 @@ router.delete('/:char_name', withAuth, async (req, res) => {
 
 router.put('/', withAuth, async (req, res) => {
     //
-    console.log(req.body);
-        const characterId = req.body.character_id;
-        const abilityId = req.body.ability_id;
-      console.log(characterId);
-      console.log(abilityId);
+    
+        const abData = req.body;
+        console.log(abData);
         try {
+        for (data of abData) {
+            console.log(data);
           const abilities = await Abilityscore.findOne({
             where: {
-              character_id: characterId,
-              ability_id: abilityId
+              character_id: data.character_id,
+              ability_id: data.ability_id
             }
           });
           if (!abilities) {
-            const newAbScore = await Abilityscore.create(req.body);
+            const newAbScore = await Abilityscore.create(data);
             console.log(`created new ability score association ${newAbScore}`);
           } else {
-            const AbScore = await Abilityscore.update(req.body, {where: {id: abilities.id} });
+            const AbScore = await Abilityscore.update(data, {where: {id: abilities.id} });
             console.log(`updated existing ability score association ${AbScore}`);
-          }
+          }}
         } catch (error) {
           console.error('Error querying Abilities:', error);
         }

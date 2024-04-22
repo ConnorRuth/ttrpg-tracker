@@ -49,11 +49,20 @@ router.get('/character/:id', withAuth, async (req, res) => {
             include: [{ model: Race}, {model: CharClass}],
         });
         const abilities = await Ability.findAll({ raw: true});
+    
+         const abScores = await Abilityscore.findAll({ 
+            raw: true,
+             where: { character_id: req.params.id}
+         })
+       
         const skills = await  Skill.findAll({raw:true
         });
         const char = charData.get({ plain: true });
+        console.log(abilities);
+        console.log(abScores);
         console.log(char);
         res.render('character', {
+            abScores,
             abilities,
            skills,
             ...char, 
