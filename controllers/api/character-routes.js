@@ -18,7 +18,7 @@ const Weapons = require('../../models/weapons');
 
 router.get('/', async (req, res) => {
     //find all characters
-    try{
+    try {
         const charData = await Character.findAll();
         res.status(200).json(charData);
         res.render('character', {
@@ -30,17 +30,17 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:char_name', async (req,res) => {
+router.get('/:char_name', async (req, res) => {
     //find one character by its `char_name` value
-    try{
+    try {
         const charData = await Character.findByPk(req.params.char_name);
 
         if (!charData) {
-            res.status(404).json({ message: 'No Character found with that name.'});
+            res.status(404).json({ message: 'No Character found with that name.' });
             return;
         }
 
-        
+
         res.render('character', {
             charData,
             loggedIn: req.session.loggedIn,
@@ -51,16 +51,16 @@ router.get('/:char_name', async (req,res) => {
 });
 
 router.post('/', withAuth, async (req, res) => {
-    
-    
+
+
     //create a new character
     try {
-        const loggedInUserId = req.session.user_id; 
+        const loggedInUserId = req.session.user_id;
         const charData = await Character.create({
             ...req.body,
             user_id: loggedInUserId
-    });
-    
+        });
+
         res.render('character', {
             charData,
             loggedIn: req.session.loggedIn,
@@ -92,30 +92,56 @@ router.delete('/:char_name', withAuth, async (req, res) => {
     }
 });
 
-router.put('/', withAuth, async (req, res) => {
-    //
-    
-        const abData = req.body;
-        console.log(abData);
-        try {
+router.put('/ability', withAuth, async (req, res) => {
+
+    const abData = req.body;
+    console.log(abData);
+    try {
         for (data of abData) {
             console.log(data);
-          const abilities = await Abilityscore.findOne({
-            where: {
-              character_id: data.character_id,
-              ability_id: data.ability_id
+            const abilities = await Abilityscore.findOne({
+                where: {
+                    character_id: data.character_id,
+                    ability_id: data.ability_id
+                }
+            });
+            if (!abilities) {
+                const newAbScore = await Abilityscore.create(data);
+                console.log(`created new ability score association ${newAbScore}`);
+            } else {
+                const AbScore = await Abilityscore.update(data, { where: { id: abilities.id } });
+                console.log(`updated existing ability score association ${AbScore}`);
             }
-          });
-          if (!abilities) {
-            const newAbScore = await Abilityscore.create(data);
-            console.log(`created new ability score association ${newAbScore}`);
-          } else {
-            const AbScore = await Abilityscore.update(data, {where: {id: abilities.id} });
-            console.log(`updated existing ability score association ${AbScore}`);
-          }}
-        } catch (error) {
-          console.error('Error querying Abilities:', error);
         }
+    } catch (error) {
+        console.error('Error querying Abilities:', error);
+    }
+});
+
+router.put('/skill', withAuth, async (req, res) => {
+
+    const skillData = req.body;
+    console.log(skillData);
+    try {
+        for (data of skillData) {
+            const skills = await Skillscore.findOne({
+                where: {
+                    skill_id: data.skill_id,
+                    character_id: data.character_id,
+                }
+            });
+            if (!skills) {
+                const newSkill = await Skillscore.create(data);
+                console.log(`new skill added ${newSkill}`);
+            } else {
+                const updateSkill = await Skillscore.update(data, { where: { id: skills.id } });
+                console.log(`new skill added ${updateSkill}`);
+            }
+        }
+
+    } catch (error) {
+        console.error('Error querying Skills:', error);
+    }
 });
 
 router.get('/login', (req, res) => {
