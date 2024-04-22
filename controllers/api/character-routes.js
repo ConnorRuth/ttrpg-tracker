@@ -114,6 +114,30 @@ router.delete('/:char_name', withAuth, async (req, res) => {
     }
 });
 
+router.put('/abilities', withAuth, async (req, res) => {
+    //
+        const characterId = req.body.character_id;
+        const abilityId = req.body.ability_id;
+      
+        try {
+          const abilities = await Ability.findOne({
+            where: {
+              character_id: characterId,
+              ability_id: abilityId
+            }
+          });
+          if (abilities.length === 0) {
+            const newAbScore = await Abilityscore.create(req.body);
+            console.log(`created new ability score association ${newAbScore}`);
+          } else {
+            const AbScore = await Abilityscore.update(req.body);
+            console.log(`updated existing ability score association ${AbScore}`);
+          }
+        } catch (error) {
+          console.error('Error querying Abilities:', error);
+        }
+});
+
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');
