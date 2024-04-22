@@ -24,9 +24,12 @@
     {{#each skills as |skill|}}
       <option value="{{skill.id}}">{{skill.skill_name}}</option>
     {{/each}}
-  </select>
+</select>
   <ul id="skillsList">
     <!-- Selected skills will be added here dynamically -->
+    {{#if skills}}
+    <li value="{{skills.id}}">{{skills.skills_name}}</li>
+    {{/if}}
   </ul>
 </div>
 
@@ -41,3 +44,7 @@
         
         <div id="result"></div>
     </div>
+
+<button id="char-update-button">Update Character</button>
+
+<script src="/assets/js/script.js"></script>

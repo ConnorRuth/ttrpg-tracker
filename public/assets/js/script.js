@@ -135,3 +135,36 @@ document.getElementById('weaponRoll').addEventListener('click', async () => {
       console.error('Error fetching side string:', error);
   }
 });
+
+
+
+
+
+const updateCharSkill = async (event) => {
+  event.preventDefault();
+
+  const skillUpdate = {
+    skill: parseInt(document.getElementById('skillsDropdown.skill.id').value),
+  };
+
+  try {
+    const response = await fetch('/api/skill', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(skillUpdate)
+    });
+
+    if (response.ok) {
+      console.log('Character skills successfully updated!');
+      location.reload();
+    } else {
+      console.error('Failed to update skills.');
+    }
+  } catch (error) {
+    console.error('Error updating skills.', error);
+  }
+};
+
+document.getElementById("char-update-button").addEventListener('click', updateCharSkill);
