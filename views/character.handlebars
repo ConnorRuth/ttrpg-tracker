@@ -2,24 +2,25 @@
   <h2>Name: {{char_name}}</h2>
   <p>Class:{{charclass.class_name}}</p>
   <p>{{subclass}}</p>
+  <p id="level" value ={{level}}>Level:{{level}}</p>
   <p>Race: {{race.race_name}}</p>
-  <p>Age: {{age}}</p>
+  <p id="age" value="{{age}}">Age: {{age}}</p>
    <div class="ability-container">
     {{#each abilities as | ability|}}
-      <div class="ability-item">
-        <select class="ability-dropdown">
+      <div class="ability-item" >
+        <select class="ability-dropdown" id="ability{{ability.id}}">
           <option value="{{ability.id}}">{{ability.Ability_name}}</option>
         </select>
-        <input type="number" class="ability-number" placeholder="Enter number">
+        <input id="ability{{ability.id}}score" type="number" class="ability-number" placeholder="Enter number">
       </div>
     {{/each}}
     </div>
     
 
-  <p>Max HP:{{maxHP}}</p>
-  <p>Current HP: {{currentHP}}</p>
+  <p id="maxHP" value="{{maxHP}}">Max HP:{{maxHP}}</p>
+  <p id="currentHP" value="{{currentHP}}">Current HP: {{currentHP}}</p>
   <p>Description:{{description}}</p>
-  <p>Features: {{features}}</p>
+  <p id="features" value="{{features}}">Features: {{features}}</p>
 <select id="skillsDropdown">
     {{#each skills as |skill|}}
       <option value="{{skill.id}}">{{skill.skill_name}}</option>
@@ -32,6 +33,7 @@
     {{/if}}
   </ul>
 </div>
+<button id="charsheet-button">Save changes</button>
 
 <div class="container">
         <h1>Dice Roller</h1>
@@ -44,7 +46,3 @@
         
         <div id="result"></div>
     </div>
-
-<button id="char-update-button">Update Character</button>
-
-<script src="/assets/js/script.js"></script>
