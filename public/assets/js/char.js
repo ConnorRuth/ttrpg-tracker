@@ -41,12 +41,12 @@ const charSaveHandler = async (event) => {
     console.log(charFormData);
     try {
         for(i=0; i<abilityFormData.length; i++){
-        const response = await fetch('/api/character/abilities', {
+        const response = await fetch('/api/character/', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify( abilityFormData)
+            body: JSON.stringify( abilityFormData[i])
         });
 
         if (response.ok) {
