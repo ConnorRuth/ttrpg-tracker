@@ -6,17 +6,21 @@
   <p>Race: {{race.race_name}}</p>
   <p id="age" value="{{age}}">Age: {{age}}</p>
    <div class="ability-container">
-    {{#each abilities as | ability|}}
+    {{#each abilities as |ability|}}
       <div class="ability-item" >
         <select class="ability-dropdown" id="ability{{ability.id}}">
           <option value="{{ability.id}}">{{ability.Ability_name}}</option>
         </select>
         <input id="ability{{ability.id}}score" type="number" class="ability-number" placeholder="Enter number">
+        </input>
+        <div>
+             
+        </div>
       </div>
     {{/each}}
     </div>
     
-
+ 
   <p id="maxHP" value="{{maxHP}}">Max HP:{{maxHP}}</p>
   <p id="currentHP" value="{{currentHP}}">Current HP: {{currentHP}}</p>
   <p>Description:{{description}}</p>
@@ -37,11 +41,13 @@
 
 <div class="container">
         <h1>Dice Roller</h1>
+        <select  id="selectedweapon">
        {{#each weapons as |weapon|}}
             <option class="weapon" id="selectedweapon" value={{weapon.damage}}>
                 <h2>{{weapon.name}} damage type: {{weapon.damage_type}}</h2>
             </option>
         {{/each}}
+        </select>
         <button id ="weaponRoll">Roll Single Die</button>
         
         <div id="result"></div>
