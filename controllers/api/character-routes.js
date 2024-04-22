@@ -70,29 +70,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-router.put('/:char_name', withAuth, async (req, res) => {
-    //update a character by its `char_name` value
-    try {
-         const charData = await Character.update(req.body, {
-            where: {
-                id: req.params.char_name,
-            }
-         });
 
-         if (!charData[0]) {
-            res.status(404).json({ message: 'No Character with this name.'});
-            return;
-         }
-
-         res.status(200).json(charData);
-         res.render('character', {
-            charData,
-            loggedIn: req.session.loggedIn,
-        });
-    } catch (err) {
-        res.status(500).json(err);;
-    }
-});
 
 router.delete('/:char_name', withAuth, async (req, res) => {
     //delete a character by its `id` value
@@ -116,21 +94,23 @@ router.delete('/:char_name', withAuth, async (req, res) => {
 
 router.put('/', withAuth, async (req, res) => {
     //
+    console.log(req.body);
         const characterId = req.body.character_id;
         const abilityId = req.body.ability_id;
-        
+      console.log(characterId);
+      console.log(abilityId);
         try {
-          const abilities = await Ability.findOne({
+          const abilities = await Abilityscore.findOne({
             where: {
               character_id: characterId,
               ability_id: abilityId
             }
           });
-          if (abilities.length === 0) {
+          if (!abilities) {
             const newAbScore = await Abilityscore.create(req.body);
             console.log(`created new ability score association ${newAbScore}`);
           } else {
-            const AbScore = await Abilityscore.update(req.body);
+            const AbScore = await Abilityscore.update(req.body, {where: {id: abilities.id} });
             console.log(`updated existing ability score association ${AbScore}`);
           }
         } catch (error) {

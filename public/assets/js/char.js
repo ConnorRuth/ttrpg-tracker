@@ -46,7 +46,7 @@ const charSaveHandler = async (event) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify( abilityFormData)
+            body: JSON.stringify( abilityFormData[i])
         });
 
         if (response.ok) {
