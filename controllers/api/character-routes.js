@@ -114,11 +114,11 @@ router.delete('/:char_name', withAuth, async (req, res) => {
     }
 });
 
-router.put('/abilities', withAuth, async (req, res) => {
+router.put('/', withAuth, async (req, res) => {
     //
         const characterId = req.body.character_id;
         const abilityId = req.body.ability_id;
-      
+        
         try {
           const abilities = await Ability.findOne({
             where: {
