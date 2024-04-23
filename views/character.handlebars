@@ -5,6 +5,7 @@
   <p id="level" value ={{level}}>Level:{{level}}</p>
   <p>Race: {{race.race_name}}</p>
   <p id="age" value="{{age}}">Age: {{age}}</p>
+  
    <div class="ability-container">
     {{#each abilities as |ability|}}
       <div class="ability-item" >
@@ -43,14 +44,14 @@
 
 <div class="container">
         <h1>Dice Roller</h1>
-        <select  id="selectedweapon">
+        <select  id="weaponselect">
        {{#each weapons as |weapon|}}
             <option class="weapon" id="selectedweapon" value={{weapon.damage}}>
-                <h2>{{weapon.name}} damage type: {{weapon.damage_type}}</h2>
+                <h2>{{weapon.name}}, damage type: {{weapon.damage_type}}</h2>
             </option>
         {{/each}}
         </select>
-        <button id ="weaponRoll">Roll Single Die</button>
+        <button id ="weaponRoll">Roll For Damage</button>
         
         <div id="result"></div>
 </div>

@@ -81,6 +81,8 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 });
 
+
+
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('home');
