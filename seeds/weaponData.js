@@ -4,7 +4,7 @@ const weaponData =[
     {
         "name": "Battleaxe",
         "damage": "1d8",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "4 lb",
         "is_magical": false
@@ -12,7 +12,7 @@ const weaponData =[
     {
         "name": "Flail",
         "damage": "1d8",
-        "damage_type:": "Bludgeoning",
+        "damage_type": "Bludgeoning",
         "Description": null,
         "weight": "2 lb",
         "is_magical": false
@@ -20,7 +20,7 @@ const weaponData =[
     {
         "name": "Glaive",
         "damage": "1d10",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "6 lb",
         "is_magical": false
@@ -28,7 +28,7 @@ const weaponData =[
     {
         "name": "Greataxe",
         "damage": "1d12",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "7 lb",
         "is_magical": false
@@ -36,7 +36,7 @@ const weaponData =[
     {
         "name": "Greatsword",
         "damage": "2d6",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "6 lb",
         "is_magical": false
@@ -44,7 +44,7 @@ const weaponData =[
     {
         "name": "Halberd",
         "damage": "1d10",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "7 lb",
         "is_magical": false
@@ -52,7 +52,7 @@ const weaponData =[
     {
         "name": "Lance",
         "damage": "1d12",
-        "damage_type:": "Piecing",
+        "damage_type": "Piecing",
         "Description": null,
         "weight": "6 lb",
         "is_magical": false
@@ -60,7 +60,7 @@ const weaponData =[
     {
         "name": "Longsword",
         "damage": "1d8",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "3 lb",
         "is_magical": false
@@ -68,7 +68,7 @@ const weaponData =[
     {
         "name": "Maul",
         "damage": "2d6",
-        "damage_type:": "Bludgeoning",
+        "damage_type": "Bludgeoning",
         "Description": null,
         "weight": "10 lb",
         "is_magical": false
@@ -76,7 +76,7 @@ const weaponData =[
     {
         "name": "Rapier",
         "damage": "1d8",
-        "damage_type:": "Piercing",
+        "damage_type": "Piercing",
         "Description": null,
         "weight": "2 lb",
         "is_magical": false
@@ -84,7 +84,7 @@ const weaponData =[
     {
         "name": "Scimitar",
         "damage": "1d6",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "3 lb",
         "is_magical": false
@@ -92,7 +92,7 @@ const weaponData =[
     {
         "name": "Shortsword",
         "damage": "1d6",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "3 lb",
         "is_magical": false
@@ -100,7 +100,7 @@ const weaponData =[
     {
         "name": "Trident",
         "damage": "1d12",
-        "damage_type:": "Piercing",
+        "damage_type": "Piercing",
         "Description": null,
         "weight": "4 lb",
         "is_magical": false
@@ -108,7 +108,7 @@ const weaponData =[
     {
         "name": "Warhammer",
         "damage": "1d12",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "2 lb",
         "is_magical": false
@@ -116,7 +116,7 @@ const weaponData =[
     {
         "name": "Whip",
         "damage": "1d4",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "2 lb",
         "is_magical": false
@@ -124,7 +124,7 @@ const weaponData =[
     {
         "name": "Crossbow,hand",
         "damage": "1d6",
-        "damage_type:": "Piercing",
+        "damage_type": "Piercing",
         "Description": null,
         "weight": "3 lb",
         "is_magical": false
@@ -132,7 +132,7 @@ const weaponData =[
     {
         "name": "Crossbow, heavy",
         "damage": "1d10",
-        "damage_type:": "Piecing",
+        "damage_type": "Piecing",
         "Description": null,
         "weight": "18 lb",
         "is_magical": false
@@ -140,7 +140,7 @@ const weaponData =[
     {
         "name": "Longbow",
         "damage": "1d8",
-        "damage_type:": "Piecing",
+        "damage_type": "Piecing",
         "Description": null,
         "weight": "2 lb",
         "is_magical": false
@@ -148,7 +148,7 @@ const weaponData =[
     {
         "name": "Club",
         "damage": "1d4",
-        "damage_type:": "Bludgeoning",
+        "damage_type": "Bludgeoning",
         "Description": null,
         "weight": "2 lb",
         "is_magical": false
@@ -156,7 +156,7 @@ const weaponData =[
     {
         "name": "Dagger",
         "damage": "1d4",
-        "damage_type:": "Piercing",
+        "damage_type": "Piercing",
         "Description": null,
         "weight": "1 lb",
         "is_magical": false
@@ -164,7 +164,7 @@ const weaponData =[
     {
         "name": "Greatclub",
         "damage": "1d8",
-        "damage_type:": "Bludgeoning",
+        "damage_type": "Bludgeoning",
         "Description": null,
         "weight": "10 lb",
         "is_magical": false
@@ -172,7 +172,7 @@ const weaponData =[
     {
         "name": "Handaxe",
         "damage": "1d6",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "2 lb",
         "is_magical": false
@@ -180,7 +180,7 @@ const weaponData =[
     {
         "name": "Javelin",
         "damage": "1d6",
-        "damage_type:": "Piercing",
+        "damage_type": "Piercing",
         "Description": null,
         "weight": "2 lb",
         "is_magical": false
@@ -188,7 +188,7 @@ const weaponData =[
     {
         "name": "Light Hammer",
         "damage": "1d4",
-        "damage_type:": "Bludgeoning",
+        "damage_type": "Bludgeoning",
         "Description": null,
         "weight": "2 lb",
         "is_magical": false
@@ -196,7 +196,7 @@ const weaponData =[
     {
         "name": "Mace",
         "damage": "1d6",
-        "damage_type:": "Bludgeoning",
+        "damage_type": "Bludgeoning",
         "Description": null,
         "weight": "4 lb",
         "is_magical": false
@@ -204,7 +204,7 @@ const weaponData =[
     {
         "name": "Quarterstaff",
         "damage": "1d6",
-        "damage_type:": "Bludgeoning",
+        "damage_type": "Bludgeoning",
         "Description": null,
         "weight": "4 lb",
         "is_magical": false
@@ -212,7 +212,7 @@ const weaponData =[
     {
         "name": "Sickle",
         "damage": "1d4",
-        "damage_type:": "Slashing",
+        "damage_type": "Slashing",
         "Description": null,
         "weight": "2 lb",
         "is_magical": false
@@ -220,7 +220,7 @@ const weaponData =[
     {
         "name": "Spear",
         "damage": "1d6",
-        "damage_type:": "Piercing",
+        "damage_type": "Piercing",
         "Description": null,
         "weight": "3 lb",
         "is_magical": false
@@ -236,7 +236,7 @@ const weaponData =[
     {
         "name": "Shortbow",
         "damage": "1d6",
-        "damage_type:": "Piercing",
+        "damage_type": "Piercing",
         "Description": null,
         "weight": "2 lb",
         "is_magical": false
@@ -244,7 +244,7 @@ const weaponData =[
     {
         "name": "Sling",
         "damage": "1d4",
-        "damage_type:": "Bludgeoning",
+        "damage_type": "Bludgeoning",
         "Description": null,
         "weight": "1 lb",
         "is_magical": false

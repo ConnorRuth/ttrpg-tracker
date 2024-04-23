@@ -23,10 +23,6 @@ Character.belongsTo(User, {
     foreignKey: 'character_id',
   });
 
-Character.hasMany(Weapon, {
-    foreignKey: 'weapon_id',
-});
-
 Character.belongsTo(CharClass, {
     foreignKey: 'charclass_id',
 });
@@ -41,12 +37,7 @@ Skill.belongsToMany(Character, {
 Character.belongsToMany(Skill, {
   through: Skillscore,
 });
-Ability.belongsToMany(Character, {
-  through: Abilityscore,
-});
-Character.belongsToMany(Ability, {
-  through: Abilityscore,
-});
+
 Character.belongsTo(Race, {
   foreignKey: 'race_id',
 });
@@ -70,4 +61,21 @@ Subclass.belongsTo(CharClass, {
 CharClass.hasMany(Subclass,{
   foreignKey:'charclass_id',
 });
+Ability.belongsToMany(Character, {
+  through: {model: Abilityscore,
+    unique:false}
+});
+Character.belongsToMany(Ability, {
+  through: {model: Abilityscore,
+    unique:false}
+});
+
+//User.belongsToMany(Profile, { through: Abilityscore });
+//Profile.belongsToMany(User, { through: Abilityscore });
+// Character.hasMany(Abilityscore);
+// Abilityscore.belongsTo(Character);
+// Ability.hasMany(Abilityscore);
+// Abilityscore.belongsTo(Ability);
+
+
 module.exports = { User, Character, CharClass, Subclass,  Weapon, Property, Skill,  Ability, Race, Skillscore, Spellsave, Abilityscore,  WeaponProp, Savescore }

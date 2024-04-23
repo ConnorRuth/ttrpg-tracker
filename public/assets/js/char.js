@@ -1,3 +1,4 @@
+
 const charSaveHandler = async (event) => {
     event.preventDefault();
     console.log('saving character...');
@@ -160,7 +161,34 @@ const updateCharSkill = async (event) => {
         console.error('Error updating skills.', error);
     }
 };
-
 document
     .getElementById('charsheet-button')
     .addEventListener('click', updateCharSkill);
+
+
+const rollDamage = async (event) => {
+    event.preventDefault();
+    const displayResult = document.getElementById("result");
+    const weaponData ={
+        damage: document.getElementById("weaponselect").value,
+    }
+    try{
+        const response = await fetch('/api/character/roll', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(weaponData)
+        });
+        if (response.ok) {
+            console.log('got the  damage');
+            displayResult.innerHTML =`<p>you rolled: ${response.results[0]} ${response.results[1]} for a total of ${response.total}</p>`;
+        } else {
+            console.error('Failed to get damage');
+        }
+    } catch (error){
+        console.error('Failed to get damage server side', error);
+    }
+    
+}
+diceButton.addEventListener('click', rollDamage);

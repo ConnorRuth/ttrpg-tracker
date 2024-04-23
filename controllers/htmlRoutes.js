@@ -47,31 +47,32 @@ router.get('/login', (req, res) => {
 router.get('/character/:id', withAuth, async (req, res) => {
     try {
         const charData = await Character.findByPk(req.params.id , {
-            include: [{ model: Race}, {model: CharClass}],
+            include: [{ model: Race}, {model: CharClass},{model: Ability, through:Abilityscore}],
         });
-        const weapons = await Weapons.findAll({raw:true,
-        include: [ {model: Property, through:WeaponProp}
-           
-       ]});
+        const weapons = await Weapons.findAll({raw:true});
         const abilities = await Ability.findAll({ raw: true});
     
          const abScores = await Abilityscore.findAll({ 
             raw: true,
              where: { character_id: req.params.id}
-         })
-       
+         });
+         const skiScores = await Skillscore.findAll({
+            raw:true,
+            where: { character_id: req.params.id}
+        });
+
         const skills = await  Skill.findAll({raw:true
         });
         const char = charData.get({ plain: true });
-        console.log(abilities);
-        console.log(abScores);
         console.log(char);
+console.log(abilities);
         res.render('character', {
-             weapons,
+            ...char,
+            skiScores,
+            weapons,
             abScores,
             abilities,
-           skills,
-            ...char, 
+            skills,
             logged_in: true
         });
     } catch (err) {

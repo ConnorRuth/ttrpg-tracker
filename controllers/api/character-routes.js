@@ -97,8 +97,8 @@ router.put('/ability', withAuth, async (req, res) => {
     const abData = req.body;
     console.log(abData);
     try {
-        for (data of abData) {
-            console.log(data);
+        for (const data of abData) {
+            console.log("----101-----",data);
             const abilities = await Abilityscore.findOne({
                 where: {
                     character_id: data.character_id,
@@ -106,9 +106,11 @@ router.put('/ability', withAuth, async (req, res) => {
                 }
             });
             if (!abilities) {
+                console.log("----109-----", data);
                 const newAbScore = await Abilityscore.create(data);
                 console.log(`created new ability score association ${newAbScore}`);
             } else {
+                console.log("----113-----", data);
                 const AbScore = await Abilityscore.update(data, { where: { id: abilities.id } });
                 console.log(`updated existing ability score association ${AbScore}`);
             }
@@ -123,7 +125,7 @@ router.put('/skill', withAuth, async (req, res) => {
     const skillData = req.body;
     console.log(skillData);
     try {
-        for (data of skillData) {
+        for (const data of skillData) {
             const skills = await Skillscore.findOne({
                 where: {
                     skill_id: data.skill_id,
@@ -143,6 +145,14 @@ router.put('/skill', withAuth, async (req, res) => {
         console.error('Error querying Skills:', error);
     }
 });
+
+// router.get('/roll', (req, res) => {
+//     const damage = req.body.damage;
+//     const kill = roll(damage);
+//     res.send(kill);
+// });
+
+
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
