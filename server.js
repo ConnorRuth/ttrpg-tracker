@@ -7,6 +7,7 @@ const routes = require('./controllers');
 const sequelize = require('./config/config');
 const exphbs = require('express-handlebars');
 const hbsHelpers = require('./utils/hbshelper');
+const { FORCE } = require('sequelize/lib/index-hints');
 // Load environment variables from .env file
 dotenv.config();
 
@@ -41,7 +42,7 @@ app.use(session({
 app.use(routes);
 
 // Start the server
-sequelize.sync().then(() => {
+sequelize.sync({FORCE}).then(() => {
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
   });
