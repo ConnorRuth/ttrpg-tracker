@@ -38,11 +38,12 @@ Character.belongsToMany(Skill, {
   through: Skillscore,
 });
 
-Character.belongsTo(Race, {
+Character.hasOne(Race, {
   foreignKey: 'race_id',
 });
 Race.hasMany(Character,{
-  foreignKey: 'race_id'
+  foreignKey: 'race_id',
+  onDelete: 'cascade',
 })
 Spellsave.belongsToMany(Character, {
   through: Savescore,

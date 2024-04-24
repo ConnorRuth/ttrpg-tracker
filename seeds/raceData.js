@@ -42,7 +42,7 @@ const raceData = [
         "race_name": "Goblin"
     }
 ];
-console.log(Race);
+
 const seedRaces = () => Race.bulkCreate(raceData);
 
 module.exports = seedRaces;
