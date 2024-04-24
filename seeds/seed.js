@@ -10,7 +10,7 @@ const seedWeaponProps = require('./propWeapon');
 const sequelize = require('../config/config');
 
 const seedAll = async () => {
-    await sequelize.sync({force:true});
+    await sequelize.sync();
     console.log('\n----- DATABASE SYNCED -----\n');
     await seedRaces();
     console.log('\n----- RACES SEEDED -----\n');
