@@ -5,22 +5,22 @@ class Race extends Model {
 
 Race.init(
     {
-     id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-     race_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    
-     }
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        race_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        
+        }
     },
     {
-    sequelize,
-    freezeTableName: true,
-    modelName: 'race',
+        sequelize,
+        freezeTableName: true,
+        modelName: 'race',
     }
 )
 

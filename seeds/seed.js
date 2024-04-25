@@ -1,3 +1,5 @@
+const { User, Character, CharClass, Subclass,  Weapon, Property, Skill,  Ability, Race, Skillscore, Spellsave, AbilityScore,  WeaponProp, Savescore } = require("../models");
+
 const seedAbilities = require('./abilityData');
 const seedClasses = require('./classData');
 const seedSubclasses = require('./subclassData');
@@ -10,7 +12,7 @@ const seedWeaponProps = require('./propWeapon');
 const sequelize = require('../config/config');
 
 const seedAll = async () => {
-    await sequelize.sync();
+    await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');
     await seedRaces();
     console.log('\n----- RACES SEEDED -----\n');

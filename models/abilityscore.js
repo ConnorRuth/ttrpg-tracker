@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/config.js');
-class Abilityscore extends Model {
+class AbilityScore extends Model {
 }
 
-Abilityscore.init(
+AbilityScore.init(
     {
      id: {
         type: DataTypes.INTEGER,
@@ -31,9 +31,10 @@ Abilityscore.init(
      }
     },
     {
-    sequelize,
-    freezeTableName: true,
-    modelName: 'abilityscore',
+        sequelize,
+        freezeTableName: true,
+        modelName: 'abilityscore',
+        underscored: true,
     }
 )
-module.exports = Abilityscore;
+module.exports = AbilityScore;
