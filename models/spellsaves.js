@@ -5,21 +5,22 @@ class Spellsave extends Model {
 
 Spellsave.init(
     {
-     id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-     save_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-     },
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        save_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     },
     {
-    sequelize,
-    freezeTableName: true,
-    modelName: 'spellsave',
+        sequelize,
+        freezeTableName: true,
+        modelName: 'spellsave',
+        underscored: true,
     }
 )
 module.exports = Spellsave;

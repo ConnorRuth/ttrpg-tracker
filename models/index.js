@@ -9,66 +9,92 @@ const Ability = require('./abilities');
 const Race = require('./race');
 const Skillscore = require('./skillscore');
 const Spellsave = require('./savescores');
-const Abilityscore = require('./abilityscore');
+const AbilityScore = require('./abilityscore');
 const WeaponProp = require('./proptoweapon');
 const Savescore = require('./savescores');
 
 
 User.hasMany(Character, {
-    foreignKey: 'character_id',
-    onDelete: 'cascade',
-  });
+  foreignKey: 'character_id',
+  onDelete: 'cascade',
+});
   
 Character.belongsTo(User, {
-    foreignKey: 'character_id',
-  });
+  foreignKey: 'character_id',
+});
 
 Character.belongsTo(CharClass, {
-    foreignKey: 'charclass_id',
+  foreignKey: 'charclass_id',
 });
 
 Character.hasOne(Subclass, {
-    foreignKey: 'subclass_id',
+  foreignKey: 'subclass_id',
 });
+
 Skill.belongsToMany(Character, {
-  through: Skillscore,
+  through: {
+    model: Skillscore,
+    unique: false
+  },
 });
 
 Character.belongsToMany(Skill, {
-  through: Skillscore,
+  through: {
+    model: Skillscore,
+    unique: false
+  },
 });
 
 Character.hasOne(Race, {
   foreignKey: 'race_id',
 });
+
 Race.hasMany(Character,{
   foreignKey: 'race_id',
   onDelete: 'cascade',
 })
+
 Spellsave.belongsToMany(Character, {
-  through: Savescore,
+  through: {
+    model: Savescore,
+    unique:false
+  },
 });
+
 Weapon.belongsToMany(Property, {
-  through: WeaponProp,
-  
+  through: {
+    model: WeaponProp,
+    unique: false
+  },
 });
+
 Property.belongsToMany(Weapon, {
-  through: WeaponProp,
+  through: {
+    model: WeaponProp,
+    unique: false
+  },
 });
 
 Subclass.belongsTo(CharClass, {
   foreignKey:'charclass_id',
 });
+
 CharClass.hasMany(Subclass,{
   foreignKey:'charclass_id',
 });
+
 Ability.belongsToMany(Character, {
-  through: {model: Abilityscore,
-    unique:false}
+  through: {
+    model: AbilityScore,
+    unique: false
+  }
 });
+
 Character.belongsToMany(Ability, {
-  through: {model: Abilityscore,
-    unique:false}
+  through: {
+    model: AbilityScore,
+    unique: false
+  }
 });
 
 //User.belongsToMany(Profile, { through: Abilityscore });
@@ -79,4 +105,4 @@ Character.belongsToMany(Ability, {
 // Abilityscore.belongsTo(Ability);
 
 
-module.exports = { User, Character, CharClass, Subclass,  Weapon, Property, Skill,  Ability, Race, Skillscore, Spellsave, Abilityscore,  WeaponProp, Savescore }
+module.exports = { User, Character, CharClass, Subclass,  Weapon, Property, Skill,  Ability, Race, Skillscore, Spellsave, AbilityScore,  WeaponProp, Savescore }

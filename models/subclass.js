@@ -5,28 +5,28 @@ class Subclass extends Model {
 
 Subclass.init(
     {
-     id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    subclass_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    associated_class: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'charclass',
-            key: 'id',
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        subclass_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        associated_class: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'charclass',
+                key: 'id',
+            }
         }
-    }
     },
     {
-    sequelize,
-    freezeTableName: true,
-    modelName: 'subclass',
+        sequelize,
+        freezeTableName: true,
+        modelName: 'subclass',
     }
 )
 
